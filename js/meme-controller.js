@@ -1,22 +1,39 @@
-
-
+let gCanvas;
+let gCtx;
 function init() {
-    console.log('loaded');
+    gCanvas = document.querySelector('#meme-canvas');
+    gCtx = gCanvas.getContext('2d');
     renderCanvas();
+
+
+    console.log('loaded');
+}
+
+function renderCanvas() {
+    // render image
+
+
+    // render texts
+    let texts = getTexts();
+    texts.forEach(text => {
+        // gCtx.beginPath();
+        gCtx.font = `${text.size}px san-serif`;
+        gCtx.fillStyle = text.color;
+        gCtx.fillText(text.line, text.pos.x, text.pos.y);
+        // gCtx.closePath();
+    });
+
 }
 
 function onAddText() {
     let memeTextEl = document.querySelector('#meme-text');
     console.log(memeTextEl);
     memeTextEl.focus();
-    addText()
+    addText();
 }
 
 
-function onChangeText() {
-    
-}
-
-function renderText() {
-    
+function onChangeText(textEl) {
+    updateText(textEl.value);
+    renderCanvas();
 }
