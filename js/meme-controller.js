@@ -4,6 +4,8 @@ let gIsMouseDown = false //flag
 let gText = null
 let gMouseDownPos = null; //do nothing yet.
 
+let gLastMove = null
+
 function init() {
     gCanvas = document.querySelector('#meme-canvas');
     gCtx = gCanvas.getContext('2d');
@@ -75,9 +77,20 @@ function onCanvasClick({ offsetX, offsetY }) {
 
 function onMouseMove({offsetX, offsetY}) {
     if(!gIsMouseDown || !gText) return
+    
+    let dX = 0;
+    if (gLastMove) {
+        dX = offsetX - gLastMove.x ;
+    } 
+    console.log('dx', dX);  
 
-    updatePos(gText, {x:offsetX - gText.outline.width/2, y:offsetY - gText.outline.height/2 })
+    updatePos(gText, {x:gText.pos.x + dX, y:offsetY - gText.outline.height/2 })
     renderCanvas()    
+
+    gLastMove = {
+        x: offsetX,
+        y: offsetY
+    }
 }
 
 function onMouseUp() {
@@ -85,6 +98,7 @@ function onMouseUp() {
     gIsMouseDown=false;
     gMouseDownPos = null;
     gText = null;
+    gLastMove = null;
 }
 
 
@@ -111,6 +125,7 @@ function renderOutline(text, color='black') {
     let outline = text.outline //mark 
     let outlineHeight = outline.height;
     let outlineWidth = outline.width;
+
     gCtx.save()
     gCtx.strokeStyle = color
     gCtx.strokeRect(text.pos.x, text.pos.y, outlineWidth, outlineHeight)
