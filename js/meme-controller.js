@@ -140,7 +140,8 @@ function renderOutline(text, color = 'black') {
 
     gCtx.save()
     gCtx.strokeStyle = color
-    gCtx.strokeRect(text.pos.x, text.pos.y, outlineWidth, outlineHeight)
+    let pad = outlineHeight / 3
+    gCtx.strokeRect(text.pos.x-pad, text.pos.y+pad, outlineWidth+pad*2, outlineHeight+pad)
     gCtx.restore()
 }
 
