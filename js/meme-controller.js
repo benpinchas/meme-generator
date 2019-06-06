@@ -146,13 +146,18 @@ function renderOutline(text, color = 'black') {
 
 
 function renderMode() {
-    let elDelBtn = document.querySelector('button#delete-text')
-    if (gText) {
-        elDelBtn.disabled = false;
-    } else {
-        elDelBtn.disabled = true;
+    let uiEditEls = document.querySelectorAll('.ui-edit > *')
+    for (let i=0; i < uiEditEls.length; i++ ) {
+        uiEditEls[i].disabled = !gText
     }
 
+    if(gText){
+        console.log('gText.size',gText.size);
+        document.querySelector('#font-size').value = gText.size
+        document.querySelector('#color').value = gText.color
+        console.log(document.querySelector('#color').value, gText.color);
+    }
+    
 }
 
 function getClickedText(offsetX, offsetY) {

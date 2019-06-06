@@ -22,7 +22,17 @@
         <div class="ui">
             <input type="text" id="text-edit" placeholder="Type S" onkeydown="onChangeText(this)">
             <button id="add-text" onclick="onAddText();"><i class="fa fa-plus"></i></button>
-            <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+
+            <div class="ui-edit">
+                <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+                <select name="font-size" id="font-size" disabled>
+                    <option value="10">10px</option>
+                    <option value="25">25px</option>
+                    <option value="50">50px</option>
+                </select>
+                <input type="color" name="color" id="color" disabled>
+            </div>
+            
         </div>
         <div class="images">
         </div>

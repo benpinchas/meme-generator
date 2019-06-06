@@ -3,9 +3,9 @@ let gMeme = {}
 function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('heloo first', 50, { x: 10, y: 100 }, undefined, 'red'),
-            createText('sfqwdew ', 10, { x: 10, y: 200 }, undefined, 'blue'),
-            createText(' by by by', 25, { x: 10, y: 270 }, undefined, 'black')
+            createText('heloo first', 50, { x: 10, y: 100 }, undefined, '#d64074'),
+            createText('sfqwdew ', 10, { x: 10, y: 200 }, undefined, '#f7ff00'),
+            createText(' by by by', 25, { x: 10, y: 270 }, undefined, '#006b31')
         ]
     }
 }
