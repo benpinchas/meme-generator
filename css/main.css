@@ -11,3 +11,13 @@ canvas {
 .container {
     background-color: #aaa;
 }
+
+
+/* Helpers */
+.inline-block {
+    display: inline-block;
+}
+
+.hidden { 
+    /* visibility: hidden; */
+}

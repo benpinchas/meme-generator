@@ -5,7 +5,8 @@ let gMeme = {
             size: 24,
             align: 'center',
             color: '#000',
-            pos: {x: 10, y: 100}
+            pos: {x: 10, y: 100},
+            dimensions: undefined
         },{
             line: 'I am a meme',
             size: 24,
@@ -28,9 +29,15 @@ function addText(line, size, align, color) {
 }
 
 function createText(line, size, align, color) {
-    return { line, size, align, color };
+    let dim = calcDimesions(line, size);
+    return { line, size, align, color, dimensions };
 }
 
+function calcDimentions(line, size) {
+    let el = document.querySelector('#sizing');
+    el.innerText = line;
+    el.style.fontSize = size + 'px';    
+}
 function updateText(line) {
     gMeme.txts[0].line = line;
 }
