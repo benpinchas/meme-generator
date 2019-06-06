@@ -61,10 +61,12 @@ function renderCanvas() {
 }
 
 function onCanvasClick({ offsetX, offsetY }) {
-    gText = null; //mark: cleaning on click
-    
+    gText = null; //mark: cleaning on click    
     gIsMouseDown = true; //flag
-    gMouseDownPos = { x: offsetX, y: offsetY } //mark: not using yet
+    gLastMove = {
+        x: offsetX,
+        y: offsetY
+    }
 
     renderCanvas()
     renderMode()
@@ -81,13 +83,12 @@ function onCanvasClick({ offsetX, offsetY }) {
 function onMouseMove({ offsetX, offsetY }) {
     if (!gIsMouseDown || !gText) return
 
-    let dX = 0;
-    if (gLastMove) {
-        dX = offsetX - gLastMove.x;
-    }
+
+    let dX = offsetX - gLastMove.x;
+    let dY = offsetY - gLastMove.y;
     console.log('dx', dX);
 
-    updatePos(gText, { x: gText.pos.x + dX, y: offsetY - gText.outline.height / 2 })
+    updatePos(gText, { x: gText.pos.x + dX, y:gText.pos.y + dY })
     renderCanvas()
 
     gLastMove = {
@@ -140,8 +141,8 @@ function renderOutline(text, color = 'black') {
 
     gCtx.save()
     gCtx.strokeStyle = color
-    let pad = outlineHeight / 3
-    gCtx.strokeRect(text.pos.x-pad, text.pos.y+pad, outlineWidth+pad*2, outlineHeight+pad)
+    let pad = 1;
+    gCtx.strokeRect(text.pos.x-pad, text.pos.y+pad, outlineWidth+ 10, outlineHeight+pad)
     gCtx.restore()
 }
 

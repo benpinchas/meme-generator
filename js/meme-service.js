@@ -49,7 +49,6 @@ function getTexts() {
 
 function updatePos(text ,pos) {
     text.pos = pos;
-    console.log('text', text);
 }
 
 function deleteText(text) {
