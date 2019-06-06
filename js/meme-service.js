@@ -52,7 +52,12 @@ function updatePos(text ,pos) {
     console.log('text', text);
 }
 
-
+function deleteText(text) {
+    let textIdx = gMeme.txts.findIndex(text => {
+        return text === text;
+    })
+    gMeme.txts.splice(textIdx, 1)
+}
 
 
 

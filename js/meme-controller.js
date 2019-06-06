@@ -32,7 +32,7 @@ function renderImages() {
             imgsHtml += '<div class="temp" >';
             imgsHtml += imgHtml;
             imgsHtml += '</div>';
-            fileNum++;            
+            fileNum++;
         }
 
     }
@@ -62,30 +62,33 @@ function renderCanvas() {
 
 function onCanvasClick({ offsetX, offsetY }) {
     gText = null; //mark: cleaning on click
-    gIsMouseDown=true; //flag
-    gMouseDownPos = {x:offsetX, y:offsetY} //mark: not using yet
+    
+    gIsMouseDown = true; //flag
+    gMouseDownPos = { x: offsetX, y: offsetY } //mark: not using yet
 
     renderCanvas()
+    renderMode()
 
     let text = getClickedText(offsetX, offsetY)
     if (text) {
-        renderOutline(text)    
         gText = text
+        renderOutline(text)
+        renderMode()
     }
 }
 
 
-function onMouseMove({offsetX, offsetY}) {
-    if(!gIsMouseDown || !gText) return
-    
+function onMouseMove({ offsetX, offsetY }) {
+    if (!gIsMouseDown || !gText) return
+
     let dX = 0;
     if (gLastMove) {
-        dX = offsetX - gLastMove.x ;
-    } 
-    console.log('dx', dX);  
+        dX = offsetX - gLastMove.x;
+    }
+    console.log('dx', dX);
 
-    updatePos(gText, {x:gText.pos.x + dX, y:offsetY - gText.outline.height/2 })
-    renderCanvas()    
+    updatePos(gText, { x: gText.pos.x + dX, y: offsetY - gText.outline.height / 2 })
+    renderCanvas()
 
     gLastMove = {
         x: offsetX,
@@ -95,19 +98,19 @@ function onMouseMove({offsetX, offsetY}) {
 
 function onMouseUp() {
     console.log('end');
-    gIsMouseDown=false;
+    gIsMouseDown = false;
     gMouseDownPos = null;
-    gText = null;
+    // gText = null;
     gLastMove = null;
 }
 
 
-function onEditText({offsetX, offsetY}) {
+function onEditText({ offsetX, offsetY }) {
     let text = getClickedText(offsetX, offsetY);
     if (text) gText = text;
     else return // Double clicked nothing..
 
-    let elEditInput =  document.querySelector('input#text-edit')
+    let elEditInput = document.querySelector('input#text-edit')
     elEditInput.value = text.line
     elEditInput.focus();
 
@@ -121,7 +124,16 @@ function onChangeText(el) {
     renderOutline(gText, 'blue') //overitten (also in render canvas)
 }
 
-function renderOutline(text, color='black') {
+
+function onDeleteText() {
+    if (!gText) return;
+    deleteText(gText)
+    gText = null
+    renderCanvas()
+    renderMode()
+}
+
+function renderOutline(text, color = 'black') {
     let outline = text.outline //mark 
     let outlineHeight = outline.height;
     let outlineWidth = outline.width;
@@ -133,6 +145,15 @@ function renderOutline(text, color='black') {
 }
 
 
+function renderMode() {
+    let elDelBtn = document.querySelector('button#delete-text')
+    if (gText) {
+        elDelBtn.disabled = false;
+    } else {
+        elDelBtn.disabled = true;
+    }
+
+}
 
 function getClickedText(offsetX, offsetY) {
     return getTexts().find(text => {
