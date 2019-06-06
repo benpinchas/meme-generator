@@ -25,14 +25,31 @@ function renderCanvas() {
         gCtx.fillText(text.line, textX, textY);
 
         let outline = text.outline //mark 
-        let outlineHeight = outline.height; 
+        let outlineHeight = outline.height;
         let outlineWidth = outline.width;
 
-        gCtx.strokeRect(textX, textY-outlineHeight , outlineWidth, outlineHeight)
+        gCtx.strokeRect(textX, textY, outlineWidth, outlineHeight)
         // gCtx.closePath();
     });
 
 }
+
+function onCanvasClick({ offsetX, offsetY }) {
+    console.log('canvas click!');
+    console.log(offsetX, offsetY);
+
+    let text = getTexts().find(text => {    
+        return (text.pos.x < offsetX && text.pos.x + text.outline.width > offsetX)
+            && (offsetY > text.pos.y - outerHeight && offsetY < text.pos.y - text.outline.height)
+    })
+
+    console.log(text);
+
+    //check if in outline
+}
+
+
+
 
 function onAddText() {
     let memeTextEl = document.querySelector('#meme-text');

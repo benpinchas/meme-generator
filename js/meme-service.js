@@ -17,6 +17,7 @@ function addText(line, size, align, color) {
 
 function createText(line, size, pos, align = 'center', color) {
     let outline = calcOutline(line, size);
+    // pos.y = pos.y - outline.height  //mark   
     return { line, size, pos ,align, color, outline };
 }
 
