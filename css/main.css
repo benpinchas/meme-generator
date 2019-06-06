@@ -9,10 +9,14 @@
 }
 body { 
     margin: 0;
-    font-family: Rubik;
 }
 /*  */
 
+body {
+    font-family: Rubik;
+    width: 100vw;
+    height: 100vh;
+}
 
 canvas {
     border: 1px solid red;
@@ -31,13 +35,6 @@ canvas {
 .images {
     grid-template-columns: repeat(5, minmax(100px, 150px));
     grid-gap: 5px;
-    
-    /* width: 100vw;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row; */
 }
 .temp {
     margin:4px;
@@ -49,7 +46,7 @@ canvas {
 }
 
 img {
-    width: inherit;
+    height: 30px;
 }
 /* Helpers */
 .grid {
@@ -59,10 +56,17 @@ img {
     display: inline-block;
 }
 
+
+.flex {
+    display: flex;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
 .hidden { 
     opacity: 0;
 }
-
 
 
 /* footer */
