@@ -15,8 +15,9 @@ function init() {
 
 function renderCanvas() {
     // render image
-
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    if (gText) renderOutline(gText)
+
     // render texts
     let texts = getTexts();
     texts.forEach(text => {
@@ -34,17 +35,15 @@ function renderCanvas() {
 }
 
 function onCanvasClick({ offsetX, offsetY }) {
-    console.log(offsetX, offsetY);
+    gText = null; //mark: cleaning on click
     gIsMouseDown=true; //flag
-    gMouseDownPos = {x:offsetX, y:offsetY}
+    gMouseDownPos = {x:offsetX, y:offsetY} //mark: not using yet
 
     renderCanvas()
 
     let text = getClickedText(offsetX, offsetY)
-    console.log('text',text);
     if (text) {
-        renderOutline(text)
-        
+        renderOutline(text)    
         gText = text
     }
 }
@@ -52,18 +51,9 @@ function onCanvasClick({ offsetX, offsetY }) {
 
 function onMouseMove({offsetX, offsetY}) {
     if(!gIsMouseDown || !gText) return
-    // console.log('mouse move', gDraggedText);
 
-    let dX = gMouseDownPos.x - offsetX
-
-    console.log(gMouseDownPos.x, offsetX);
-    // gMouseDownPos.x 
-   
     updatePos(gText, {x:offsetX - gText.outline.width/2, y:offsetY - gText.outline.height/2 })
-    renderCanvas()
-    renderOutline(gText)
-    // console.log(gDraggedText.pos);
-    
+    renderCanvas()    
 }
 
 function onMouseUp() {
@@ -75,26 +65,32 @@ function onMouseUp() {
 
 
 function onEditText({offsetX, offsetY}) {
-    console.log('edit!');
     let text = getClickedText(offsetX, offsetY);
     if (text) gText = text;
+    else return // Double clicked nothing..
 
     let elEditInput =  document.querySelector('input#text-edit')
     elEditInput.value = text.line
     elEditInput.focus();
+
+    renderOutline(gText, 'blue')
 }
 
 function onChangeText(el) {
     updateText(gText, el.value)
+    updateOutline(gText)
     renderCanvas()
+    renderOutline(gText, 'blue') //overitten (also in render canvas)
 }
 
-function renderOutline(text) {
+function renderOutline(text, color='black') {
     let outline = text.outline //mark 
     let outlineHeight = outline.height;
     let outlineWidth = outline.width;
-
+    gCtx.save()
+    gCtx.strokeStyle = color
     gCtx.strokeRect(text.pos.x, text.pos.y, outlineWidth, outlineHeight)
+    gCtx.restore()
 }
 
 

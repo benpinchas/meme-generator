@@ -36,6 +36,11 @@ function updateText(text, line) {
     text.line = line
 }
 
+function updateOutline(text) {
+    // console.log('updating outline:', text);
+    text.outline = calcOutline(text.line, text.size)
+}
+
 function getTexts() {
     return gMeme.txts;
 }
