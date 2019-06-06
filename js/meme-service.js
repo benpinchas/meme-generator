@@ -27,6 +27,7 @@ function calcOutline(line, size) {
     let el = document.querySelector('#sizing');
     el.innerText = line;
     el.style.fontSize = size + 'px';
+    // hi
     return { width: el.clientWidth + 1, height: el.clientHeight + 1 }
 }
 
