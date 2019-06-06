@@ -9,24 +9,25 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/beb69355bd.js"></script>
 </head>
+
 <body onload="init()">
     <div class="container">
-        <canvas id="meme-canvas" width="400" height="300" 
-        onmousedown="onCanvasClick(event)" 
-        onmousemove="onMouseMove(event)" 
-        onmouseup="onMouseUp()"
-        ondblclick="onStartEditText()"
-        >
+        double click a text for text edit <br>
+        one click for edit color / font-size / delete <br>
+        you can drag the texts and add new ones <br>
+        <canvas id="meme-canvas" width="400" height="300" onmousedown="onCanvasClick(event)"
+            onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ondblclick="onStartEditText()">
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
         <div class="ui">
             <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
-            
+
             <button id="add-text" onclick="onAddText();"><i class="fa fa-plus"></i></button>
 
             <div class="ui-edit">
                 <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
-                <input type="range" name="font-size" id="font-size" min="10" max="78"  oninput="onSetTextProps()" disabled>
+                <input type="range" name="font-size" id="font-size" min="10" max="78" oninput="onSetTextProps()"
+                    disabled>
                 <!-- <select name="font-size" id="font-size" onchange="onSetTextProps()" disabled>
                     <option value="10">10px</option>
                     <option value="25">25px</option>
@@ -34,7 +35,7 @@
                 </select> -->
                 <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
             </div>
-            
+
         </div>
         <div class="images">
         </div>
@@ -43,7 +44,26 @@
         <div id="sizing" class="hidden inline-block">I am a meme</div>
 
     </div>
+
+
+    <div class="about-us-container">
+        <div class="about-us">
+            <img src="" alt="">
     
+            <div>
+                <h2>Our Name</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Laboriosam provident aut non corporis, quas possimus fugit,
+                    error veritatis praesentium eius commodi omnis recusandae placeat
+                    modi consectetur temporibus molestias numquam voluptatum!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>

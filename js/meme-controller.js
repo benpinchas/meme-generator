@@ -104,9 +104,13 @@ function onMouseUp() {
     gLastMove = null;
 }
 
-// // let text = getClickedText(offsetX, offsetY);
-// if (text) gText = text;
-// else return // Double clicked on nothing..
+
+function onAddText() {
+    addText()
+    gText = getTexts()[getTexts().length-1]
+    renderCanvas()
+}
+
 function onStartEditText() {
     if (!gText) return
 

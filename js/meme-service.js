@@ -4,7 +4,7 @@ function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
             createText('heloo first', 50, { x: 10, y: 100 }, '#d64074'),
-            createText('sfqwdew ', 10, { x: 10, y: 200 }, '#f7ff00'),
+            createText('sfqwdew ', 27, { x: 10, y: 200 }, '#f7ff00'),
             createText(' by by by', 25, { x: 10, y: 270 }, '#006b31')
         ]
     }
@@ -15,7 +15,7 @@ function addText(line, size, pos,color) {
     gMeme.txts.push(newText);
 }
 
-function createText(line, size, pos, color) {
+function createText(line='Add Text', size=25, pos={x: 100, y: 100}, color='#000000') {
     let outline = calcOutline(line, size);
     // pos.y = pos.y - outline.height  //mark   
     return { line, size, pos, color, outline };
