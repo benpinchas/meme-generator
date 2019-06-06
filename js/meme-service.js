@@ -3,7 +3,7 @@ let gMeme = {}
 function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('heloo first', 20, { x: 10, y: 100 }, undefined, 'red'),
+            createText('heloo first', 50, { x: 10, y: 100 }, undefined, 'red'),
             createText('sfqwdew ', 10, { x: 10, y: 200 }, undefined, 'blue'),
             createText(' by by by', 25, { x: 10, y: 270 }, undefined, 'black')
         ]
@@ -32,8 +32,13 @@ function calcOutline(line, size) {
 }
 
 
-function updateText(line) {
-    gMeme.txts[0].line = line;
+function updateText(text, line) {
+    text.line = line
+}
+
+function updateOutline(text) {
+    // console.log('updating outline:', text);
+    text.outline = calcOutline(text.line, text.size)
 }
 
 function getTexts() {
@@ -41,6 +46,11 @@ function getTexts() {
 }
 
 
+
+function updatePos(text ,pos) {
+    text.pos = pos;
+    console.log('text', text);
+}
 
 
 
