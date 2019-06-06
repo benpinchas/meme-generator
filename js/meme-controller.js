@@ -2,7 +2,6 @@ let gCanvas;
 let gCtx;
 let gIsMouseDown = false //flag
 let gText = null
-let gMouseDownPos = null; //do nothing yet.
 
 let gLastMove = null
 
