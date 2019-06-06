@@ -12,33 +12,33 @@
 
 <body onload="init()">
 
-        <header>
-                <div class="ui container-horizontal">
-                    <div class="container-horizontal">
-                        <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
-                        <button id="add-text" onclick="onAddText();">Add New Text</button>
-                    </div>
-    
-                    <div class="ui-edit container-horizontal">
-                        <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
-                        <input type="range" name="font-size" id="font-size" min="10" max="78" oninput="onSetTextProps()"
-                            disabled>
-                        <!-- <select name="font-size" id="font-size" onchange="onSetTextProps()" disabled>
-                            <option value="10">10px</option>
-                            <option value="25">25px</option>
-                            <option value="50">50px</option>
-                        </select> -->
-                        <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
-                    </div>
-    
-                </div>
-            </header>
+    <header>
+        <div class="ui container-horizontal">
+            <div class="container-horizontal">
+                <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
+                <button id="add-text" onclick="onAddText();">Add New Text</button>
+            </div>
+
+            <div class="ui-edit container-horizontal">
+                <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+                <input type="range" name="font-size" id="font-size" min="10" max="78" oninput="onSetTextProps()"
+                    disabled>
+        
+                <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
+            </div>
+
+        </div>
+    </header>
 
     <div class="container canvas-container">
         <canvas id="meme-canvas" width="400" height="300" onmousedown="onCanvasClick(event)"
             onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ondblclick="onStartEditText()">
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
+
+        <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
+                Save as Jpeg
+        </a>
 
         <div style="text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
             double click a text for text edit <br>

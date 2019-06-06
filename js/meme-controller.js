@@ -184,6 +184,16 @@ function renderMode() {
 
 }
 
+
+function downloadCanvas(elLink) {
+    gText = null;
+    renderCanvas()
+    var content = gCanvas.toDataURL('image/jpeg');
+    elLink.href = content
+}
+
+
+
 function getClickedText(offsetX, offsetY) {
     return getTexts().find(text => {
         return (offsetX > text.pos.x && offsetX < text.pos.x + text.outline.width)
