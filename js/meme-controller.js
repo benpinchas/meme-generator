@@ -15,15 +15,22 @@ function init() {
 function renderImages() {
     // loop over images
     let src = 'img/';
-    let fileType = '.png';
+    let fileType = '.jpg';
     let imgsHtml = '';
-    for (let i = 1; i <= 25; i++) {
-        let paddedFileName = ('' + i).padStart(3, '0');
-        let fileName = src + paddedFileName + fileType;
-        let imgHtml = `<img src="${fileName}" alt="">`;
-        imgsHtml += imgHtml;
+    var fileNum = 1;
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            let paddedFileName = ('' + fileNum).padStart(3, '0');
+            let fileName = src + paddedFileName + fileType;
+            let imgHtml = `<img src="${fileName}" alt="">`;
+            imgsHtml += '<div class="temp" >';
+            imgsHtml += imgHtml;
+            imgsHtml += '</div>';
+            fileNum++;            
+        }
+
     }
-    document.querySelector('.grid.images').innerHTML = imgsHtml;
+    document.querySelector('.images').innerHTML = imgsHtml;
 }
 
 function renderCanvas() {

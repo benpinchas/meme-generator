@@ -19,6 +19,21 @@ canvas {
     border: 1px solid black;
 }
 
+.images {
+    width: 100vw;
+    overflow: scroll;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.temp {
+    margin:4px;
+    width: 30px;
+}
+img {
+    width: inherit;
+}
 /* Helpers */
 .grid {
     display: grid;
