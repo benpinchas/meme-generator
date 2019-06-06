@@ -25,8 +25,8 @@ function renderImages() {
         for (let j = 0; j < 5; j++) {
             let paddedFileName = ('' + fileNum).padStart(3, '0');
             let fileName = src + paddedFileName + fileType;
-            let imgHtml = `<img src="${fileName}" alt="">`;
-            imgsHtml += '<div class="temp" >';
+            let imgHtml = `<img onclick="onClickImage(this)" src="${fileName}" alt="">`;
+            imgsHtml += '<div class="flex grid-item">';
             imgsHtml += imgHtml;
             imgsHtml += '</div>';
             fileNum++;
@@ -36,9 +36,28 @@ function renderImages() {
     document.querySelector('.images').innerHTML = imgsHtml;
 }
 
+function renderImage(img) {
+    debugger;
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+    // gCanvas.width = img.width;
+    // gCanvas.height = img.height;
+}
+
+function onClickImage(imgEl) {
+    debugger;
+    updateImage(imgEl.getAttribute('src'));
+    renderCanvas();
+}
+
 function renderCanvas() {
     // render image
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+    let imgSrc = getImgSrc();
+    if (imgSrc) {
+        debugger;
+        let imgEl = document.querySelector(`[src="${imgSrc}"`);
+        renderImage(imgEl, renderImage);
+    }
     if (gText) renderOutline(gText)
 
     // render texts
