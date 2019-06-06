@@ -2,8 +2,9 @@ let gCanvas;
 let gCtx;
 let gIsMouseDown = false //flag
 let gText = null
-
 let gLastMove = null
+
+let prevImgEl = null;
 
 function init() {
     gCanvas = document.querySelector('#meme-canvas');
@@ -41,8 +42,11 @@ function renderImage(img) {
 }
 
 function onClickImage(imgEl) {
+    if (prevImgEl) prevImgEl.classList.remove('selected')
+    imgEl.classList.add('selected')
     updateImgSrc(imgEl.getAttribute('src'));
     renderCanvas();
+    prevImgEl = imgEl;
 }
 
 function renderCanvas() {

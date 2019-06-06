@@ -81,8 +81,8 @@ header {
 canvas {
     border: 1px solid red;
     cursor: pointer;
-    height: 300px;
-    width: 400px;
+    height: 600px;
+    width: 800px;
 }
 
 #sizing {
@@ -110,12 +110,35 @@ button:disabled {
     height: auto;
 }
 
+.grid {
+    display: grid;
+}
+
+.grid-item {
+    height: 20vw;
+}
+
 .images>div>img {
     /* width:100px; */
+    cursor: pointer;
+
     width: 20vw;
     height: 17vw;
     max-width: 20vw;
 }
+.images>div>img:hover {
+    opacity: 0.9;
+}
+
+img.selected {
+    box-shadow: 9px 11px 11px #170606;
+    z-index: 10;
+    height: 20vw !important;
+    position: absolute;
+    transition: .4s;
+}
+
+
 
 .ui-edit {
     width: 40%;
@@ -130,11 +153,7 @@ img {
     height: 30px;
 }
 
-/* Helpers */
 
-.grid {
-    display: grid;
-}
 
 .inline-block {
     display: inline-block;
@@ -147,7 +166,7 @@ img {
 /* footer */
 
 .about-us-container {
-    background-color: #5db64b;
+    background-color: #2FB298;
 }
 
 .about-us {
@@ -185,7 +204,7 @@ img {
     }
     canvas {
         width: 95vw;
-        height: 95vw/4 *3;
+        height: calc(95vw/4 *3);
     }
     .images {
         grid-template-columns: repeat(4, minmax(20px, 23vw));
