@@ -59,6 +59,9 @@ function renderCanvas() {
 }
 
 function onCanvasClick({ offsetX, offsetY }) {
+    if (gText && gText.line === '') {
+        onDeleteText()
+    }
     gText = null; //mark: cleaning on click    
     gIsMouseDown = true; //flag
     gLastMove = {
@@ -111,18 +114,14 @@ function onStartEditText() {
     let elEditInput = document.querySelector('input#text-edit')
     elEditInput.value = gText.line
     elEditInput.focus();
-
     renderOutline(gText, 'blue')
 }
 
 function editText(el) {
-    if (el.value === '') {
-        onDeleteText()
-        return;
-    }
     updateText(gText, el.value)
     updateOutline(gText)
     renderCanvas()
+    
     renderOutline(gText, 'blue') //overitten (also in render canvas)
 }
 

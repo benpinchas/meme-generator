@@ -55,7 +55,6 @@ function deleteText(text) {
     let textIdx = gMeme.txts.findIndex(textObj => {
         return textObj === text;
     })
-    console.log(textIdx);
     gMeme.txts.splice(textIdx, 1)
 }
 

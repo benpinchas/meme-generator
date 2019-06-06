@@ -18,6 +18,8 @@ canvas {
 
 #sizing {
     border: 1px solid black;
+    min-height: 10px;
+    min-width: 10px;
 }
 
 .images {

@@ -20,7 +20,8 @@
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
         <div class="ui">
-            <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeydown="editText(this)">
+            <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
+            
             <button id="add-text" onclick="onAddText();"><i class="fa fa-plus"></i></button>
 
             <div class="ui-edit">
@@ -37,8 +38,12 @@
         </div>
         <div class="images">
         </div>
+
+
+        <div id="sizing" class="hidden inline-block">I am a meme</div>
+
     </div>
-    <div id="sizing" class="hidden inline-block">I am a meme</div>
+    
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>
