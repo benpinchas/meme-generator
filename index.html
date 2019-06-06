@@ -10,13 +10,14 @@
     <script src="https://kit.fontawesome.com/beb69355bd.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <div class="container">
         <canvas id="meme-canvas" width="400" height="300">
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
         <div class="ui">
-            <button id="add-text" onclick="onAddText(this);"><i class="fa fa-plus"></i></button>  
+            <input type="text" id="meme-text" placeholder="Type S" onchange="onChangedText(this)">
+            <button id="add-text" onclick="onAddText();"><i class="fa fa-plus"></i></button>
         </div>
     </div>
     <script src="js/meme-service.js"></script>
