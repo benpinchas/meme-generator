@@ -10,9 +10,33 @@ function init() {
     gCanvas = document.querySelector('#meme-canvas');
     gCtx = gCanvas.getContext('2d');
     createTexts();
+    // j
+    renderImages();
+
     console.log(getTexts());
     renderCanvas();
     console.log('loaded');
+}
+
+function renderImages() {
+    // loop over images
+    let src = 'img/';
+    let fileType = '.jpg';
+    let imgsHtml = '';
+    var fileNum = 1;
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            let paddedFileName = ('' + fileNum).padStart(3, '0');
+            let fileName = src + paddedFileName + fileType;
+            let imgHtml = `<img src="${fileName}" alt="">`;
+            imgsHtml += '<div class="temp" >';
+            imgsHtml += imgHtml;
+            imgsHtml += '</div>';
+            fileNum++;            
+        }
+
+    }
+    document.querySelector('.images').innerHTML = imgsHtml;
 }
 
 function renderCanvas() {
