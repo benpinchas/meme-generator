@@ -12,11 +12,16 @@
 
 <body onload="init()">
     <div class="container">
-        <canvas id="meme-canvas" width="400" height="300" onclick="onCanvasClick(event)">
+        <canvas id="meme-canvas" width="400" height="300" 
+        onmousedown="onCanvasClick(event)" 
+        onmousemove="onMouseMove(event)" 
+        onmouseup="onMouseUp()"
+        ondblclick="onEditText(event)"
+        >
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
         <div class="ui">
-            <input type="text" id="meme-text" placeholder="Type S" onchange="onChangeText(this)">
+            <input type="text" id="text-edit" placeholder="Type S" onchange="onChangeText(this)">
             <button id="add-text" onclick="onAddText();"><i class="fa fa-plus"></i></button>
         </div>
     </div>
