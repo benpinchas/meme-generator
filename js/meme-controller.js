@@ -37,14 +37,10 @@ function renderImages() {
 }
 
 function renderImage(img) {
-    // debugger;
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-    // gCanvas.width = img.width;
-    // gCanvas.height = img.height;
 }
 
 function onClickImage(imgEl) {
-    // debugger;
     updateImgSrc(imgEl.getAttribute('src'));
     renderCanvas();
 }
@@ -54,7 +50,6 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     let imgSrc = getImgSrc();
     if (imgSrc) {
-        // debugger;
         let imgEl = document.querySelector(`[src="${imgSrc}"`);
         renderImage(imgEl, renderImage);
     }
@@ -126,7 +121,7 @@ function onMouseUp() {
 
 function onAddText() {
     addText()
-    gText = getTexts()[getTexts().length-1]
+    gText = getTexts()[getTexts().length - 1]
     renderCanvas()
 }
 
@@ -143,14 +138,14 @@ function editText(el) {
     updateText(gText, el.value)
     updateOutline(gText)
     renderCanvas()
-    
+
     renderOutline(gText, 'blue') //overitten (also in render canvas)
 }
 
 function onSetTextProps() {
     let color = document.querySelector('#color').value
     let size = document.querySelector('#font-size').value
-    setTextProps(gText,color, size)
+    setTextProps(gText, color, size)
     renderCanvas()
 }
 

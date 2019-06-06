@@ -70,30 +70,3 @@ function getImgSrc() {
 function updateImgSrc(imgSrc) {
     gMeme.imgSrc = imgSrc;
 }
-
-/*
-
-txts: [
-        {
-            line: 'I am a meme',
-            size: 24,
-            align: 'center',
-            color: '#000',
-            pos: {x: 10, y: 100},
-            dimensions: undefined
-        },{
-            line: 'I am a meme',
-            size: 24,
-            align: 'center',
-            color: '#f00',
-            pos: {x: 10, y: 200}
-        },{
-            line: 'I am a meme',
-            size: 24,
-            align: 'center',
-            color: '#0f0',
-            pos: {x: 10, y: 260}
-        }
-    ]
-
-    */
