@@ -22,7 +22,7 @@ function renderCanvas() {
 
         gCtx.font = `${text.size}px san-serif`;
         gCtx.fillStyle = text.color;
-        gCtx.fillText(text.line, textX, textY);
+        gCtx.fillText(text.line, textX , textY + text.outline.height);
 
         let outline = text.outline //mark 
         let outlineHeight = outline.height;
@@ -38,9 +38,9 @@ function onCanvasClick({ offsetX, offsetY }) {
     console.log('canvas click!');
     console.log(offsetX, offsetY);
 
-    let text = getTexts().find(text => {    
-        return (text.pos.x < offsetX && text.pos.x + text.outline.width > offsetX)
-            && (offsetY > text.pos.y - outerHeight && offsetY < text.pos.y - text.outline.height)
+    let text = getTexts().find(text => {
+        return (offsetX > text.pos.x && offsetX < text.pos.x + text.outline.width)
+            && (offsetY > text.pos.y && offsetY < text.pos.y + text.outline.height)
     })
 
     console.log(text);
