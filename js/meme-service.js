@@ -64,6 +64,12 @@ function setTextProps(text, color, size) {
     text.size = size;
     text.outline = calcOutline(text.line, size)
 }
+function getImgSrc() {
+    return gMeme.imgSrc;
+}
+function updateImgSrc(imgSrc) {
+    gMeme.imgSrc = imgSrc;
+}
 
 /*
 

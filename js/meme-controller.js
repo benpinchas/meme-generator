@@ -37,15 +37,15 @@ function renderImages() {
 }
 
 function renderImage(img) {
-    debugger;
+    // debugger;
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
     // gCanvas.width = img.width;
     // gCanvas.height = img.height;
 }
 
 function onClickImage(imgEl) {
-    debugger;
-    updateImage(imgEl.getAttribute('src'));
+    // debugger;
+    updateImgSrc(imgEl.getAttribute('src'));
     renderCanvas();
 }
 
@@ -54,7 +54,7 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     let imgSrc = getImgSrc();
     if (imgSrc) {
-        debugger;
+        // debugger;
         let imgEl = document.querySelector(`[src="${imgSrc}"`);
         renderImage(imgEl, renderImage);
     }
