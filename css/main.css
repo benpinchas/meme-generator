@@ -21,6 +21,8 @@ body {
 canvas {
     border: 1px solid red;
     cursor: pointer;
+    height: 300px;
+    width: 400px;
 }
 .container {
     background-color: #aaa;
@@ -36,10 +38,6 @@ canvas {
     grid-template-columns: repeat(5, minmax(100px, 150px));
     grid-gap: 5px;
 }
-.temp {
-    margin:4px;
-    width: 30px;
-}
 
 .ui-edit> * {
     cursor: pointer;
@@ -54,6 +52,9 @@ img {
 }
 .inline-block {
     display: inline-block;
+}
+.flow-col {
+    flex-flow: row;
 }
 
 
