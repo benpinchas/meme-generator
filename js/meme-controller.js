@@ -4,9 +4,26 @@ function init() {
     gCanvas = document.querySelector('#meme-canvas');
     gCtx = gCanvas.getContext('2d');
     createTexts();
+    // j
+    renderImages();
+
     console.log(getTexts());
     renderCanvas();
     console.log('loaded');
+}
+
+function renderImages() {
+    // loop over images
+    let src = 'img/';
+    let fileType = '.png';
+    let imgsHtml = '';
+    for (let i = 1; i <= 25; i++) {
+        let paddedFileName = ('' + i).padStart(3, '0');
+        let fileName = src + paddedFileName + fileType;
+        let imgHtml = `<img src="${fileName}" alt="">`;
+        imgsHtml += imgHtml;
+    }
+    document.querySelector('.grid.images').innerHTML = imgsHtml;
 }
 
 function renderCanvas() {
@@ -22,7 +39,7 @@ function renderCanvas() {
 
         gCtx.font = `${text.size}px san-serif`;
         gCtx.fillStyle = text.color;
-        gCtx.fillText(text.line, textX , textY + text.outline.height);
+        gCtx.fillText(text.line, textX, textY + text.outline.height);
 
         let outline = text.outline //mark 
         let outlineHeight = outline.height;

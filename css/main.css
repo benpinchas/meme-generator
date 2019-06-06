@@ -1,9 +1,12 @@
+/* Cleaning Elements' Defaults */
 * {
     box-sizing: border-box;
 }
 body { 
     margin: 0;
 }
+/*  */
+
 
 canvas {
     border: 1px solid red;
@@ -17,6 +20,9 @@ canvas {
 }
 
 /* Helpers */
+.grid {
+    display: grid;
+}
 .inline-block {
     display: inline-block;
 }
