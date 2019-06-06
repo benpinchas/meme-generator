@@ -4,7 +4,7 @@ function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
             createText('heloo first', 50, { x: 10, y: 100 }, '#d64074'),
-            createText('sfqwdew ', 27, { x: 10, y: 200 }, '#f7ff00'),
+            createText('sfqwdew ', 27, { x: 10, y: 200 }, '#0084ff'),
             createText(' by by by', 25, { x: 10, y: 270 }, '#006b31')
         ]
     }

@@ -26,7 +26,7 @@ function renderImages() {
             let paddedFileName = ('' + fileNum).padStart(3, '0');
             let fileName = src + paddedFileName + fileType;
             let imgHtml = `<img onclick="onClickImage(this)" src="${fileName}" alt="">`;
-            imgsHtml += '<div class="flex grid-item">';
+            imgsHtml += '<div class="flex grid-item flex-center">';
             imgsHtml += imgHtml;
             imgsHtml += '</div>';
             fileNum++;

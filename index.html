@@ -11,39 +11,49 @@
 </head>
 
 <body onload="init()">
-    <div class="container">
-        double click a text for text edit <br>
-        one click for edit color / font-size / delete <br>
-        you can drag the texts and add new ones <br>
+
+        <header>
+                <div class="ui container-horizontal">
+                    <div class="container-horizontal">
+                        <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
+                        <button id="add-text" onclick="onAddText();">Add New Text</button>
+                    </div>
+    
+                    <div class="ui-edit container-horizontal">
+                        <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+                        <input type="range" name="font-size" id="font-size" min="10" max="78" oninput="onSetTextProps()"
+                            disabled>
+                        <!-- <select name="font-size" id="font-size" onchange="onSetTextProps()" disabled>
+                            <option value="10">10px</option>
+                            <option value="25">25px</option>
+                            <option value="50">50px</option>
+                        </select> -->
+                        <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
+                    </div>
+    
+                </div>
+            </header>
+
+    <div class="container canvas-container">
         <canvas id="meme-canvas" width="400" height="300" onmousedown="onCanvasClick(event)"
             onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ondblclick="onStartEditText()">
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
-        <div class="ui">
-            <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
 
-            <button id="add-text" onclick="onAddText();"><i class="fa fa-plus"></i></button>
-
-            <div class="ui-edit">
-                <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
-                <input type="range" name="font-size" id="font-size" min="10" max="78" oninput="onSetTextProps()"
-                    disabled>
-                <!-- <select name="font-size" id="font-size" onchange="onSetTextProps()" disabled>
-                    <option value="10">10px</option>
-                    <option value="25">25px</option>
-                    <option value="50">50px</option>
-                </select> -->
-                <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
-            </div>
-
+        <div style="text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
+            double click a text for text edit <br>
+            one click for edit color / font-size / delete <br>
+            you can drag the texts and add new ones <br>
         </div>
-
 
         <div id="sizing" class="hidden inline-block">I am a meme</div>
 
     </div>
-    <div class="grid images">
+
+    <div class="images-container container">
+        <div class="grid images"></div>
     </div>
+
 
 
     <div class="about-us-container">
