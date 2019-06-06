@@ -5,6 +5,13 @@
     src: url("../fonts/Rubik-Regular.ttf")
 }
 
+@font-face {
+    font-family: BadMofo;
+    src: url("../fonts/BadMofo.ttf")
+}
+
+
+
 * {
     box-sizing: border-box;
 }
@@ -12,15 +19,11 @@
 body {
     margin: 0;
     overflow-x: hidden;
-}
-
-/*  */
-
-body {
     font-family: Rubik;
     width: 100vw;
     height: 100vh;
 }
+
 
 input, button {
     padding: 3px;
@@ -48,7 +51,7 @@ input:disabled, button:disabled {
 .hidden {
     opacity: 0;
     position: absolute;
-    left: -500;
+    left: -500px;
 }
 
 .container {

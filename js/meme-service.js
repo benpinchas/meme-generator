@@ -3,9 +3,10 @@ let gMeme = {}
 function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('heloo first', 50, { x: 10, y: 100 }, '#d64074'),
-            createText('sfqwdew ', 27, { x: 10, y: 200 }, '#0084ff'),
-            createText(' by by by', 25, { x: 10, y: 270 }, '#006b31')
+            createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff'),
+            createText('One click to edit', 37, { x: 20, y: 160 }, '#ffffff'),
+            createText('Double Click To Write', 64, { x: 10, y: 210 }, '#0084ff'),
+            createText('Drag Me', 44, { x: 10, y: 370 }, '#006b31')
         ]
     }
 }

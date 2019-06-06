@@ -66,9 +66,13 @@ function renderCanvas() {
         let textX = text.pos.x;
         let textY = text.pos.y;
 
-        gCtx.font = `${text.size}px san-serif`;
+        gCtx.font = `${text.size}px Rubik`;
+
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
+        
+        gCtx.lineWidth = 2;
+        gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
     });
