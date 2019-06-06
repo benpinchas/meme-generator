@@ -1,5 +1,52 @@
-let gMeme = {
-    txts: [
+let gMeme = {}
+
+function createTexts() {
+    if (!gMeme.txts) {
+        gMeme.txts = [
+            createText('heloo first', 20, { x: 10, y: 100 }, undefined, 'red'),
+            createText('sfqwdew ', 10, { x: 10, y: 200 }, undefined, 'blue'),
+            createText(' by by by', 25, { x: 10, y: 270 }, undefined, 'black')
+        ]
+    }
+}
+
+function addText(line, size, align, color) {
+    let newText = createText(line, size, align, color);
+    gMeme.txts.push(newText);
+}
+
+function createText(line, size, pos, align = 'center', color) {
+    let outline = calcOutline(line, size);
+    return { line, size, pos ,align, color, outline };
+}
+
+
+
+function calcOutline(line, size) {
+    let el = document.querySelector('#sizing');
+    el.innerText = line;
+    el.style.fontSize = size + 'px';
+    return { width: el.clientWidth + 1, height: el.clientHeight + 1 }
+}
+
+
+function updateText(line) {
+    gMeme.txts[0].line = line;
+}
+
+function getTexts() {
+    return gMeme.txts;
+}
+
+
+
+
+
+
+
+/*
+
+txts: [
         {
             line: 'I am a meme',
             size: 24,
@@ -18,30 +65,8 @@ let gMeme = {
             size: 24,
             align: 'center',
             color: '#0f0',
-            pos: {x: 10, y: 300}
+            pos: {x: 10, y: 260}
         }
     ]
-}
 
-function addText(line, size, align, color) {
-    let newText = createText(line, size, align, color);
-    gMeme.txts.push();
-}
-
-function createText(line, size, align, color) {
-    let dim = calcDimesions(line, size);
-    return { line, size, align, color, dimensions };
-}
-
-function calcDimentions(line, size) {
-    let el = document.querySelector('#sizing');
-    el.innerText = line;
-    el.style.fontSize = size + 'px';    
-}
-function updateText(line) {
-    gMeme.txts[0].line = line;
-}
-
-function getTexts() {
-    return gMeme.txts;
-}
+    */
