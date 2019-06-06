@@ -3,22 +3,22 @@ let gMeme = {}
 function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('heloo first', 50, { x: 10, y: 100 }, undefined, '#d64074'),
-            createText('sfqwdew ', 10, { x: 10, y: 200 }, undefined, '#f7ff00'),
-            createText(' by by by', 25, { x: 10, y: 270 }, undefined, '#006b31')
+            createText('heloo first', 50, { x: 10, y: 100 }, '#d64074'),
+            createText('sfqwdew ', 10, { x: 10, y: 200 }, '#f7ff00'),
+            createText(' by by by', 25, { x: 10, y: 270 }, '#006b31')
         ]
     }
 }
 
-function addText(line, size, align, color) {
-    let newText = createText(line, size, align, color);
+function addText(line, size, pos,color) {
+    let newText = createText(line, size, pos, color);
     gMeme.txts.push(newText);
 }
 
-function createText(line, size, pos, align = 'center', color) {
+function createText(line, size, pos, color) {
     let outline = calcOutline(line, size);
     // pos.y = pos.y - outline.height  //mark   
-    return { line, size, pos ,align, color, outline };
+    return { line, size, pos, color, outline };
 }
 
 
@@ -52,13 +52,19 @@ function updatePos(text ,pos) {
 }
 
 function deleteText(text) {
-    let textIdx = gMeme.txts.findIndex(text => {
-        return text === text;
+    let textIdx = gMeme.txts.findIndex(textObj => {
+        return textObj === text;
     })
+    console.log(textIdx);
     gMeme.txts.splice(textIdx, 1)
 }
 
-
+function setTextProps(text, color, size) {
+    console.log('setTextProps');
+    text.color = color;
+    text.size = size;
+    text.outline = calcOutline(text.line, size)
+}
 
 /*
 

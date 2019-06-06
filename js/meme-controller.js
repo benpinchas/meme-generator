@@ -12,8 +12,6 @@ function init() {
     createTexts();
     // j
     renderImages();
-
-    console.log(getTexts());
     renderCanvas();
     console.log('loaded');
 }
@@ -86,9 +84,8 @@ function onMouseMove({ offsetX, offsetY }) {
 
     let dX = offsetX - gLastMove.x;
     let dY = offsetY - gLastMove.y;
-    console.log('dx', dX);
 
-    updatePos(gText, { x: gText.pos.x + dX, y:gText.pos.y + dY })
+    updatePos(gText, { x: gText.pos.x + dX, y: gText.pos.y + dY })
     renderCanvas()
 
     gLastMove = {
@@ -105,24 +102,35 @@ function onMouseUp() {
     gLastMove = null;
 }
 
-
-function onEditText({ offsetX, offsetY }) {
-    let text = getClickedText(offsetX, offsetY);
-    if (text) gText = text;
-    else return // Double clicked nothing..
+// // let text = getClickedText(offsetX, offsetY);
+// if (text) gText = text;
+// else return // Double clicked on nothing..
+function onStartEditText() {
+    if (!gText) return
 
     let elEditInput = document.querySelector('input#text-edit')
-    elEditInput.value = text.line
+    elEditInput.value = gText.line
     elEditInput.focus();
 
     renderOutline(gText, 'blue')
 }
 
-function onChangeText(el) {
+function editText(el) {
+    if (el.value === '') {
+        onDeleteText()
+        return;
+    }
     updateText(gText, el.value)
     updateOutline(gText)
     renderCanvas()
     renderOutline(gText, 'blue') //overitten (also in render canvas)
+}
+
+function onSetTextProps() {
+    let color = document.querySelector('#color').value
+    let size = document.querySelector('#font-size').value
+    setTextProps(gText,color, size)
+    renderCanvas()
 }
 
 
@@ -142,24 +150,22 @@ function renderOutline(text, color = 'black') {
     gCtx.save()
     gCtx.strokeStyle = color
     let pad = 1;
-    gCtx.strokeRect(text.pos.x-pad, text.pos.y+pad, outlineWidth+ 10, outlineHeight+pad)
+    gCtx.strokeRect(text.pos.x - pad, text.pos.y + pad, outlineWidth + 10, outlineHeight + pad)
     gCtx.restore()
 }
 
 
 function renderMode() {
     let uiEditEls = document.querySelectorAll('.ui-edit > *')
-    for (let i=0; i < uiEditEls.length; i++ ) {
+    for (let i = 0; i < uiEditEls.length; i++) {
         uiEditEls[i].disabled = !gText
     }
 
-    if(gText){
-        console.log('gText.size',gText.size);
+    if (gText) {
         document.querySelector('#font-size').value = gText.size
         document.querySelector('#color').value = gText.color
-        console.log(document.querySelector('#color').value, gText.color);
     }
-    
+
 }
 
 function getClickedText(offsetX, offsetY) {
