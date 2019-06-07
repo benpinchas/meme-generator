@@ -169,7 +169,7 @@ function onDeleteText() {
 
 function renderOutline(text, color = 'black') {
     let outline = text.outline //mark 
-    let outlineHeight = text.size+7
+    let outlineHeight = Math.max(text.size ,outline.height)
     let outlineWidth = Math.max(20, outline.width)
 
     gCtx.save()
