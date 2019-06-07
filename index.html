@@ -14,8 +14,8 @@
 
     <header>
         <div class="left-nav">
-            <a class="uppercase" href="#meme-canvas">Canvas</a>
-            <a class="uppercase" href="#images">Images</a>
+            <a class="uppercase" href="#sect-canvas">Canvas</a>
+            <a class="uppercase" href="#sect-images">Images</a>
         </div>
         <div class="logo">Logo</div>
         <div class="right-nav">
@@ -23,42 +23,42 @@
             <a class="uppercase" href="#images">Images</a>
         </div>
     </header>
+    <section>
+        <div id="sect-canvas" class="container canvas-container">
+            <div class="ui container">
+                <div class="container-horizontal">
+                    <div class="container-horizontal">
+                        <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
+                        <button id="add-text" class="pointer" onclick="onAddText();">Add New Text</button>
+                    </div>
 
-    <div class="ui container" >
-        <div class="container-horizontal">
-            <div class="container-horizontal">
-                <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
-                <button id="add-text" onclick="onAddText();">Add New Text</button>
+                    <div class="ui-edit container-horizontal">
+                        <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+                        <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
+                            disabled>
+
+                        <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
+                    </div>
+                </div>
             </div>
+            <canvas id="meme-canvas" width="800" height="600" onmousedown="onMouseDown(event)"
+                onmousemove="onMouseMove(event)" onmouseup="onMouseUp()">
+                Please upgrade your internet browser to enjoy our meme generator
+            </canvas>
 
-            <div class="ui-edit container-horizontal">
-                <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
-                <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
-                    disabled>
+            <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
+                Save as Jpeg
+            </a>
 
-                <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
+            <div style="text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
+                double click a text for text edit <br>
+                one click for edit color / font-size / delete <br>
+                you can drag the texts and add new ones <br>
             </div>
-        </div>
-    </div>
-    <div class="container canvas-container">
-        <canvas id="meme-canvas" width="800" height="600" onmousedown="onMouseDown(event)"
-            onmousemove="onMouseMove(event)" onmouseup="onMouseUp()">
-            Please upgrade your internet browser to enjoy our meme generator
-        </canvas>
-
-        <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
-            Save as Jpeg
-        </a>
-
-        <div style="text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
-            double click a text for text edit <br>
-            one click for edit color / font-size / delete <br>
-            you can drag the texts and add new ones <br>
+            <div id="sizing" class="hidden inline-block"></div>
         </div>
 
-        <div id="sizing" class="hidden inline-block">I am a meme</div>
-
-    </div>
+    </section>
 
     <div class="images-container container">
         <div class="grid images"></div>

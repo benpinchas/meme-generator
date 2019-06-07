@@ -26,11 +26,15 @@ body {
 }
 
 a {
-    color:inherit;
+    color: inherit;
     text-decoration: none;
 }
+
 /*  */
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     overflow-x: hidden;
@@ -47,7 +51,6 @@ header a:hover {
     color: #2eb398;
 }
 
-
 input, button {
     padding: 3px;
     border-radius: 7px;
@@ -58,15 +61,10 @@ input {
     cursor: pointer;
 }
 
-
-
 input:disabled, button:disabled {
     opacity: 0.3;
     cursor: default;
 }
-
-
-
 
 .hidden {
     position: absolute;
@@ -100,6 +98,16 @@ header {
     align-items: center;
 }
 
+.left-nav>*:not(:last-child) {
+    margin-right: 20px;
+}
+.right-nav>*:not(:first-child) {
+    margin-left: 20px;
+}
+.logo {
+    margin: 20px;
+}
+
 canvas {
     border: 1px solid red;
     cursor: pointer;
@@ -113,10 +121,10 @@ canvas {
     min-width: 10px;
 }
 
-.ui {
+/* .ui {
     width: 700px;
-    /* background-color: aquamarine; */
-}
+    background-color: aquamarine;
+} */
 
 button:disabled {
     color: black;
@@ -263,6 +271,10 @@ img {
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 /*  */
