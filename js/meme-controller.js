@@ -65,7 +65,6 @@ function renderCanvas() {
         // gCtx.beginPath();
         let textX = text.pos.x;
         let textY = text.pos.y;
-
         gCtx.font = `${text.size}px Impact`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
@@ -170,15 +169,14 @@ function onDeleteText() {
 
 function renderOutline(text, color = 'black') {
     let outline = text.outline //mark 
-    let outlineHeight = outline.height;
-    let outlineWidth = outline.width;
+    let outlineHeight = text.size+7
+    let outlineWidth = Math.max(20, outline.width)
 
     gCtx.save()
     gCtx.strokeStyle = color
-    let pad = 1;
     gCtx.setLineDash([6]);
-    gCtx.strokeRect(text.pos.x - 20, text.pos.y + pad, outlineWidth + 20, outlineHeight + 20)
-    
+    let pad = 10;
+    gCtx.strokeRect(text.pos.x-pad, text.pos.y+pad, outlineWidth+pad, outlineHeight)
     gCtx.restore()
 }
 
