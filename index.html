@@ -15,7 +15,7 @@
     <header>
         <div class="ui container-horizontal">
             <div class="container-horizontal">
-                <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
+                <input type="text" class="" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
                 <button id="add-text" onclick="onAddText();">Add New Text</button>
             </div>
 
@@ -31,8 +31,8 @@
     </header>
 
     <div class="container canvas-container">
-        <canvas id="meme-canvas" width="800" height="600" onmousedown="onCanvasClick(event)"
-            onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ondblclick="onStartEditText()">
+        <canvas id="meme-canvas" width="800" height="600" onmousedown="onMouseDown(event)"
+            onmousemove="onMouseMove(event)" onmouseup="onMouseUp()">
             Please upgrade your internet browser to enjoy our meme generator
         </canvas>
 

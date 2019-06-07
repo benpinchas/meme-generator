@@ -4,11 +4,11 @@ function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
             createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff'),
-            createText('One click to edit', 37, { x: 20, y: 160 }, '#ffffff'),
-            createText('Double Click To Write', 64, { x: 10, y: 210 }, '#0084ff'),
+            createText('Click To Edit me!', 64, { x: 10, y: 210 }, '#0084ff'),
             createText('Drag Me', 44, { x: 10, y: 370 }, '#006b31')
         ]
     }
+    
 }
 
 function addText(line, size, pos,color) {
@@ -16,7 +16,7 @@ function addText(line, size, pos,color) {
     gMeme.txts.push(newText);
 }
 
-function createText(line='Add Text', size=25, pos={x: 100, y: 100}, color='#000000') {
+function createText(line='Add Text', size=55, pos={x: 100, y: 100}, color='#ffffff') {
     let outline = calcOutline(line, size);
     // pos.y = pos.y - outline.height  //mark   
     return { line, size, pos, color, outline };

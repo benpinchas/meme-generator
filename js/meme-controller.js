@@ -10,9 +10,10 @@ function init() {
     gCanvas = document.querySelector('#meme-canvas');
     gCtx = gCanvas.getContext('2d');
     createTexts();
-    // j
     renderImages();
-    renderCanvas();
+    renderCanvas()
+    // let defaultImg = document.querySelector('[src="img/002.jpg"]');
+    // onClickImage(defaultImg)
     console.log('loaded');
 }
 
@@ -50,12 +51,11 @@ function onClickImage(imgEl) {
 }
 
 function renderCanvas() {
-    // render image
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     let imgSrc = getImgSrc();
     if (imgSrc) {
         let imgEl = document.querySelector(`[src="${imgSrc}"`);
-        renderImage(imgEl, renderImage);
+        renderImage(imgEl);
     }
     if (gText) renderOutline(gText)
 
@@ -66,11 +66,11 @@ function renderCanvas() {
         let textX = text.pos.x;
         let textY = text.pos.y;
 
-        gCtx.font = `${text.size}px Rubik`;
+        gCtx.font = `bold ${text.size}px Impact`;
 
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
-        
+
         gCtx.lineWidth = 2;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
@@ -79,7 +79,7 @@ function renderCanvas() {
 
 }
 
-function onCanvasClick({ offsetX, offsetY }) {
+function onMouseDown({ offsetX, offsetY }) {
     if (gText && gText.line === '') {
         onDeleteText()
     }
@@ -97,6 +97,7 @@ function onCanvasClick({ offsetX, offsetY }) {
     if (text) {
         gText = text
         renderOutline(text)
+        setTimeout(onStartEditText, 0) //or onMouseUp
         renderMode()
     }
 }
@@ -139,15 +140,17 @@ function onStartEditText() {
     let elEditInput = document.querySelector('input#text-edit')
     elEditInput.value = gText.line
     elEditInput.focus();
-    renderOutline(gText, 'blue')
+
+    console.log('elEditInput',elEditInput);
+    renderOutline(gText)
 }
 
-function editText(el) {
-    updateText(gText, el.value)
+function editText(input) {
+    updateText(gText, input.value)
     updateOutline(gText)
     renderCanvas()
-
-    renderOutline(gText, 'blue') //overitten (also in render canvas)
+    console.log('editttt');
+    renderOutline(gText) //overitten (also in render canvas)
 }
 
 function onSetTextProps() {
@@ -174,7 +177,9 @@ function renderOutline(text, color = 'black') {
     gCtx.save()
     gCtx.strokeStyle = color
     let pad = 1;
+    gCtx.setLineDash([6]);
     gCtx.strokeRect(text.pos.x - pad, text.pos.y + pad, outlineWidth + 10, outlineHeight + pad)
+    
     gCtx.restore()
 }
 
