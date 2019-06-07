@@ -67,7 +67,6 @@ function renderCanvas() {
         let textY = text.pos.y;
 
         gCtx.font = `bold ${text.size}px Impact`;
-
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 

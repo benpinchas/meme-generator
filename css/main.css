@@ -30,6 +30,10 @@ input, button {
     border-radius: 7px;
 }
 
+input {
+    font-family: Impact;
+}
+
 input:disabled, button:disabled {
     opacity: 0.3;
 }
