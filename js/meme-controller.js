@@ -65,7 +65,7 @@ function renderCanvas() {
         // gCtx.beginPath();
         let textX = text.pos.x;
         let textY = text.pos.y;
-        gCtx.lineJoin = 'round';
+        
         gCtx.font = `${text.size}px Impact`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
