@@ -65,11 +65,13 @@ function renderCanvas() {
         // gCtx.beginPath();
         let textX = text.pos.x;
         let textY = text.pos.y;
+        gCtx.lineJoin = 'round';
         gCtx.font = `${text.size}px Impact`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
-
-        gCtx.lineWidth = 3;
+        
+        gCtx.strokeStyle = 'black';
+        gCtx.lineWidth = text.size/17;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
@@ -139,7 +141,7 @@ function onStartEditText() {
     elEditInput.value = gText.line
     elEditInput.focus();
 
-    console.log('elEditInput',elEditInput);
+    console.log('elEditInput', elEditInput);
     renderOutline(gText)
 }
 
@@ -169,14 +171,14 @@ function onDeleteText() {
 
 function renderOutline(text, color = 'black') {
     let outline = text.outline //mark 
-    let outlineHeight = Math.max(text.size ,outline.height)
+    let outlineHeight = Math.max(text.size, outline.height)
     let outlineWidth = Math.max(20, outline.width)
 
     gCtx.save()
     gCtx.strokeStyle = color
     gCtx.setLineDash([6]);
     let pad = 10;
-    gCtx.strokeRect(text.pos.x-pad, text.pos.y+pad, outlineWidth+pad, outlineHeight)
+    gCtx.strokeRect(text.pos.x - pad, text.pos.y + pad, outlineWidth + pad, outlineHeight)
     gCtx.restore()
 }
 
