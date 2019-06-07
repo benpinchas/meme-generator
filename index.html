@@ -24,7 +24,7 @@
         </div>
     </header>
 
-    <div class="ui container" >
+    <div class="ui container">
         <div class="container-horizontal">
             <div class="container-horizontal">
                 <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
@@ -61,6 +61,9 @@
     </div>
 
     <div class="images-container container">
+        <div>
+            <input type="search" name="" id="" placeholder="search" onkeyup="renderImages(this.value)">
+        </div>
         <div class="grid images" id="images-grid">
 
         </div>
@@ -85,7 +88,7 @@
     </div>
 
 
-    
+
     <script src="js/img-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>

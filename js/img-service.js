@@ -20,7 +20,7 @@ var gImages = [
     },
     {
         id: 1, url: 'img/trump-red.jpg',
-        keywords: ['donald trump', 'usa', 'america']
+        keywords: ['president', 'donald trump', 'usa', 'america']
     },
     {
         id: 1, url: 'img/putin.jpg',
@@ -40,7 +40,7 @@ var gImages = [
 
 
 
-function getGimages() {
+function getImages() {
     return gImages;
 }
 

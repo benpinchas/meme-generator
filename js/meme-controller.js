@@ -17,25 +17,33 @@ function init() {
     console.log('loaded');
 }
 
-function renderImages() {
-    // loop over images
-    let src = 'img/';
-    let fileType = '.jpg';
-    let imgsHtml = '';
-    var fileNum = 1;
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-            let paddedFileName = ('' + fileNum).padStart(3, '0');
-            let fileName = src + paddedFileName + fileType;
-            let imgHtml = `<img onclick="onClickImage(this)" src="${fileName}" alt="">`;
-            imgsHtml += '<div class="flex grid-item flex-center">';
-            imgsHtml += imgHtml;
-            imgsHtml += '</div>';
-            fileNum++;
-        }
 
-    }
-    document.querySelector('.images').innerHTML = imgsHtml;
+
+function filterImages(str) {
+    return getImages().filter(image => {
+       return image.keywords.find(keyword => {
+            let lettersArr = keyword.split('')
+            lettersArr = lettersArr.splice(0, str.length, str.length)
+            lettersArr = lettersArr.join('');
+            console.log(lettersArr === str);
+            return lettersArr === str
+        })
+    })
+}
+
+
+function renderImages(searchStr) {
+    let images =  (searchStr)?  filterImages(searchStr) : getImages()
+
+    let strHTMLs = images.map(image => {
+        return `
+        <div class="flex grid-item flex-center">
+            <img onclick="onClickImage(this)" src="${image.url}" alt="">
+        </div>
+        `
+    })
+
+    document.querySelector('.images').innerHTML = strHTMLs.join('');
 }
 
 function renderImage(img) {
