@@ -66,11 +66,11 @@ function renderCanvas() {
         let textX = text.pos.x;
         let textY = text.pos.y;
 
-        gCtx.font = `bold ${text.size}px Impact`;
+        gCtx.font = `${text.size}px Impact`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
-        gCtx.lineWidth = 2;
+        gCtx.lineWidth = 3;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
@@ -177,7 +177,7 @@ function renderOutline(text, color = 'black') {
     gCtx.strokeStyle = color
     let pad = 1;
     gCtx.setLineDash([6]);
-    gCtx.strokeRect(text.pos.x - pad, text.pos.y + pad, outlineWidth + 10, outlineHeight + pad)
+    gCtx.strokeRect(text.pos.x - 20, text.pos.y + pad, outlineWidth + 20, outlineHeight + 20)
     
     gCtx.restore()
 }

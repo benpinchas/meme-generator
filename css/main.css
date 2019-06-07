@@ -11,6 +11,10 @@
 }
 
 
+@font-face {
+    font-family: Ahronbd;
+    src: url("../fonts/ahronbd.ttf")
+}
 
 * {
     box-sizing: border-box;
