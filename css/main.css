@@ -35,6 +35,9 @@ a {
 html {
     scroll-behavior: smooth;
 }
+section {
+    padding-top: 50px;
+}
 
 body {
     overflow-x: hidden;
@@ -44,7 +47,17 @@ body {
 }
 
 header {
+    background-color: black;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 40px;
 }
 
 header a:hover {
@@ -89,23 +102,16 @@ input:disabled, button:disabled {
     margin-bottom: 20px;
 }
 
-header {
-    background-color: black;
-    height: 50px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .left-nav>*:not(:last-child) {
     margin-right: 20px;
 }
+
 .right-nav>*:not(:first-child) {
     margin-left: 20px;
 }
+
 .logo {
-    margin: 20px;
+    margin: 0 30px;
 }
 
 canvas {
@@ -222,10 +228,6 @@ img {
     }
     .ui {
         flex-direction: column;
-    }
-    canvas {
-        width: 95vw;
-        height: calc(95vw/4 *3);
     }
     .images {
         grid-template-columns: repeat(4, minmax(20px, 23vw));
