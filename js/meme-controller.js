@@ -83,15 +83,15 @@ function renderCanvas() {
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
-        gCtx.lineWidth = 2;
+        gCtx.lineWidth = text.size/17;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
     });
 }
 
+//b: editDivs rendering based on canvasTexts position
 function renderTexts() {
-
     for (var i = 0; i < getTexts().length; i++) {
         let text = getTexts()[i]
         let editDiv = `<div 
@@ -284,7 +284,7 @@ function renderMode() {
     for (let i = 0; i < uiEditEls.length; i++) {
         uiEditEls[i].disabled = !gEditDiv
     }
-    
+
     if (gEditDiv) {
         let canvasText = getTextById(gEditDiv.dataset.id)
         document.querySelector('#font-size').value = canvasText.size
@@ -303,45 +303,3 @@ function downloadCanvas(elLink) {
 }
 
 
-
-
-
-
-
-
-
-
-
-/*
-function filterImages(str) {
-    return getImages().filter(image => {
-       return image.keywords.find(keyword => {
-            let lettersArr = keyword.split('')
-            lettersArr = lettersArr.splice(0, str.length, str.length)
-            lettersArr = lettersArr.join('');
-            console.log(lettersArr === str);
-            return lettersArr === str
-        })
-    })
-
-    //one letter mistake:
-
-        let regexes = []
-    for (let i = 0; i < str.length; i++) {
-        let letters = str.split('')
-        letters.splice(i+1, 0, '?')
-        let regex = letters.join('')
-        regex = new RegExp(regex)
-        regexes.push(regex)
-        console.log(regexes);
-    }
-    return getImages().filter(image => {
-        return image.keywords.find(keyword => {
-            return regexes.find(regex => {
-                if (keyword.match(regex)) return true;
-            })
-        })
-    })
-
-
-} */
