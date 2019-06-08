@@ -117,8 +117,6 @@ input:disabled, button:disabled {
 canvas {
     border: 1px solid red;
     cursor: pointer;
-    height: 600px;
-    width: 800px;
 }
 
 #sizing {
@@ -229,6 +227,8 @@ img {
     .ui {
         flex-direction: column;
     }
+
+
     .images {
         grid-template-columns: repeat(4, minmax(20px, 23vw));
         height: auto;
@@ -280,3 +280,7 @@ img {
 }
 
 /*  */
+
+
+
+

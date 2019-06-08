@@ -8,6 +8,11 @@ let prevImgEl = null;
 
 function init() {
     gCanvas = document.querySelector('#meme-canvas');
+    if (window.innerWidth < 800 || window.innerHeight < 600) {
+        gCanvas.width = screen.width-20;
+        gCanvas.height = screen.height / 2;
+    }
+
     gCtx = gCanvas.getContext('2d');
     createTexts();
     renderImages();
@@ -21,7 +26,7 @@ function init() {
 
 //b: regex based filter
 function filterImages(str) {
-    let regex = new RegExp(str)
+    let regex = new RegExp(str, 'i')
     return getImages().filter(image => {
         return image.keywords.find(keyword => {
             return keyword.match(regex)
@@ -124,6 +129,41 @@ function onMouseMove({ offsetX, offsetY }) {
     gLastMove = {
         x: offsetX,
         y: offsetY
+    }
+}
+
+function onTouchStart(ev) {
+   console.log('onTouchStart');
+    console.log(ev);
+    var touch = ev.touches[0];
+    let clientX = touch.clientX
+    let clientY = touch.clientY
+
+    gLastMove = {
+        x: clientX,
+        y: clientY
+    }
+
+}
+
+function onTouchMove(ev) {
+    // ev.preventDefault(); 
+    var touch = ev.touches[0];
+    let clientX = touch.clientX
+    let clientY = touch.clientY
+
+    if (!gText) return
+
+    console.log('here');
+    let dX = clientX - gLastMove.x;
+    let dY = clientY - gLastMove.y;
+    console.log(dX, dY);
+    updatePos(gText, { x: gText.pos.x + dX, y: gText.pos.y + dY })
+    renderCanvas()
+
+    gLastMove = {
+        x: clientX,
+        y: clientY
     }
 }
 
