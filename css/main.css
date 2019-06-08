@@ -19,6 +19,7 @@
 
 * {
     box-sizing: border-box;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling for ios */
 }
 
 html {
@@ -296,11 +297,11 @@ img {
     cursor: pointer;
 }
 
-/*  */
+/* b: needed for the editable divs */
 .canvas-wrap {
     position: relative;
 }
-
+/* b: text-box is the class of the editable div */
 .text-box {
     background-color: transparent;
     border: 1px dotted black;

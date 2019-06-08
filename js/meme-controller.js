@@ -143,7 +143,6 @@ function onEditDivClick(ev, el) {
 
 function onMouseMove({ screenX, screenY }) {
     if (!gIsMouseDown || !gEditDiv) return
-    console.log(event);
 
     let dX = screenX - gLastMove.x;
     let dY = screenY - gLastMove.y;
@@ -211,7 +210,6 @@ function onTouchMove(ev) {
 }
 
 function onMouseUp() {
-    console.log('end');
     gIsMouseDown = false;
     gMouseDownPos = null;
     // gText = null;
