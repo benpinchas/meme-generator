@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Editable divs + responsive</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/beb69355bd.js"></script>
 </head>
@@ -24,7 +24,7 @@
     </header>
     <section id="sect-canvas">
         <div class="container canvas-container">
-            
+
             <div class="ui container">
                 <div class="container-horizontal">
                     <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
@@ -39,12 +39,18 @@
                 </div>
             </div>
 
-            <canvas id="meme-canvas" width="800" height="600" onmousedown="onMouseDown(event)"
-                onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ontouchstart="onTouchStart(event)"
-                ontouchmove="onTouchMove(event)">
-                Please upgrade your internet browser to enjoy our meme generator
-            </canvas>
 
+            <div class="canvas-wrap" 
+                onmousemove="onMouseMove(event)" 
+                onmouseup="onMouseUp()"
+
+                ontouchmove="onTouchMove(event)"
+                >
+                <span></span>
+                <canvas id="meme-canvas" width="800" height="600">
+                    Please upgrade your internet browser to enjoy our meme generator
+                </canvas>
+            </div>
             <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
                 Save as Jpeg
             </a>
@@ -94,3 +100,9 @@
 </body>
 
 </html>
+
+
+
+<!-- onmousedown="onMouseDown(event)"
+                    onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ontouchstart="onTouchStart(event)"
+                    ontouchmove="onTouchMove(event)" -->

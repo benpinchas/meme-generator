@@ -3,23 +3,22 @@ let gMeme = {}
 function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff'),
-            createText('Click To Edit me!', 64, { x: 10, y: 210 }, '#0084ff'),
-            createText('Drag Me', 44, { x: 10, y: 370 }, '#006b31')
+            createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff','1'),
+            createText('One click to edit', 37, { x: 20, y: 160 }, '#ffffff','2'),
+            createText('Double Click To Write', 64, { x: 10, y: 210 }, '#0084ff','3'),
+            createText('Drag Me', 44, { x: 10, y: 370 }, '#006b31','4')
         ]
     }
-    
 }
 
-function addText(line, size, pos,color) {
-    let newText = createText(line, size, pos, color);
+function addText(line, size, pos,color, id) {
+    let newText = createText(line, size, pos, color, id);
     gMeme.txts.push(newText);
 }
 
-function createText(line='Add Text', size=55, pos={x: 100, y: 100}, color='#ffffff') {
+function createText(line='Add Text', size=25, pos={x: 100, y: 100}, color='#000000',id) {
     let outline = calcOutline(line, size);
-    // pos.y = pos.y - outline.height  //mark   
-    return { line, size, pos, color, outline };
+    return { line, size, pos, color, id, outline};
 }
 
 
@@ -33,10 +32,6 @@ function calcOutline(line, size) {
 }
 
 
-function updateText(text, line) {
-    text.line = line
-}
-
 function updateOutline(text) {
     // console.log('updating outline:', text);
     text.outline = calcOutline(text.line, text.size)
@@ -45,7 +40,6 @@ function updateOutline(text) {
 function getTexts() {
     return gMeme.txts;
 }
-
 
 
 function updatePos(text ,pos) {
@@ -70,4 +64,16 @@ function getImgSrc() {
 }
 function updateImgSrc(imgSrc) {
     gMeme.imgSrc = imgSrc;
+}
+
+
+
+function getTextById(id) {
+    return gMeme.txts.find(text => {
+        return text.id === id;
+    })
+}
+
+function updateTextContent(textObj, line) {
+    textObj.line = line
 }

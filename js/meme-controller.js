@@ -1,10 +1,13 @@
+//combine
 let gCanvas;
 let gCtx;
 let gIsMouseDown = false //flag
-let gText = null
 let gLastMove = null
-
 let prevImgEl = null;
+
+let gEditDiv = null
+//same1
+
 
 function init() {
     gCanvas = document.querySelector('#meme-canvas');
@@ -16,11 +19,10 @@ function init() {
     gCtx = gCanvas.getContext('2d');
     createTexts();
     renderImages();
+    
     renderCanvas()
-    // let defaultImg = document.querySelector('[src="img/002.jpg"]');
-    // onClickImage(defaultImg)
-    console.log('loaded');
-}
+    renderTexts();
+} //same 2
 
 
 
@@ -49,8 +51,6 @@ function renderImages(searchStr) {
 }
 
 
-
-
 function renderImage(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
@@ -70,7 +70,6 @@ function renderCanvas() {
         let imgEl = document.querySelector(`[src="${imgSrc}"]`);
         renderImage(imgEl);
     }
-    if (gText) renderOutline(gText)
 
     // render texts
     let texts = getTexts();
@@ -79,62 +78,92 @@ function renderCanvas() {
         let textX = text.pos.x;
         let textY = text.pos.y;
 
-        gCtx.font = `${text.size}px Impact`;
-        gCtx.fillStyle = text.color;
-        gCtx.fillText(text.line, textX, textY + text.outline.height);
+        gCtx.font = `${text.size}px Rubik`;
 
-        gCtx.strokeStyle = 'black';
-        gCtx.lineWidth = text.size / 17;
-        gCtx.strokeText(text.line, textX, textY + text.outline.height);
+        gCtx.fillStyle = text.color;
+        gCtx.fillText(text.line, textX, textY+text.outline.height);
+
+        gCtx.lineWidth = 2;
+        gCtx.strokeText(text.line, textX, textY+text.outline.height);
 
         // gCtx.closePath();
     });
+}
+
+function renderTexts() {
+
+    for (var i = 0; i < getTexts().length; i++) {
+        let text = getTexts()[i]
+        let editDiv = `<div 
+        data-id="${text.id}"
+        class="text-box"
+        contenteditable="true"
+        style="left:${text.pos.x}px; top:${text.pos.y}px; font-size:${text.size}px"
+        onmousedown="onEditDivClick(event, this)"
+        onkeyup="onKeyUp(this)"
+        
+        ontouchstart="onTouchStart(event, this)"
+        >
+        ${text.line}</div>`
+        document.querySelector('.canvas-wrap span').innerHTML += editDiv;
+    }
 
 }
 
-function onMouseDown({ offsetX, offsetY }) {
-    if (gText && gText.line === '') {
-        onDeleteText()
-    }
-    gText = null; //mark: cleaning on click    
-    gIsMouseDown = true; //flag
-    gLastMove = {
-        x: offsetX,
-        y: offsetY
-    }
+function onKeyUp(elEditDiv) { //added
+    let id = elEditDiv.dataset.id
+    let textObj = getTextById(id)
+    console.log(textObj);
+    updateTextContent(textObj,elEditDiv.innerText)
+
     renderCanvas()
+}
+
+
+function onEditDivClick(ev, el) {
+    gIsMouseDown = true;
+    gEditDiv = el
+
+    gLastMove = {
+        x: ev.screenX,
+        y: ev.screenY
+    }
+
     renderMode()
-    
-    let text = getClickedText(offsetX, offsetY)
-    if (text) {
-        gText = text
-        onStartEditText()
-        // setTimeout(onStartEditText, 0) 
-        renderMode()
-    }
 }
 
 
-function onMouseMove({ offsetX, offsetY }) {
-    if (!gIsMouseDown || !gText) return
+function onMouseMove({screenX, screenY}) {   
+    if (!gIsMouseDown || !gEditDiv) return
+    console.log(event);
+    
+    let dX = screenX - gLastMove.x;
+    let dY = screenY - gLastMove.y;
 
+    gEditDiv.style.left = parseInt(gEditDiv.style.left) + dX + 'px';
+    gEditDiv.style.top =  parseInt(gEditDiv.style.top) + dY + 'px';
 
-    let dX = offsetX - gLastMove.x;
-    let dY = offsetY - gLastMove.y;
-
-    updatePos(gText, { x: gText.pos.x + dX, y: gText.pos.y + dY })
+    let canvasText = getTextById(gEditDiv.dataset.id)
+    
+    updatePos(canvasText, { x: canvasText.pos.x + dX, y: canvasText.pos.y + dY })
     renderCanvas()
 
     gLastMove = {
-        x: offsetX,
-        y: offsetY
+        x: screenX,
+        y: screenY
     }
+
 }
 
-function onTouchStart(ev) {
+function onMouseUp() {
+    gIsMouseDown = false;
+    gLastMove = null;
+}
+
+function onTouchStart(ev, elDiv) {
    console.log('onTouchStart');
-    console.log(ev);
-    var touch = ev.touches[0];
+    gEditDiv = elDiv
+    let touch = ev.touches[0];
     let clientX = touch.clientX
     let clientY = touch.clientY
 
@@ -146,25 +175,31 @@ function onTouchStart(ev) {
 }
 
 function onTouchMove(ev) {
-    if (!gText) return; //b: and let the user scroll also
+    console.log('here');
+    // if (!gEditDiv) return; //b: and let the user scroll also
     ev.preventDefault(); 
+
     var touch = ev.touches[0];
     let clientX = touch.clientX
     let clientY = touch.clientY
-
     
 
-    console.log('here');
     let dX = clientX - gLastMove.x;
     let dY = clientY - gLastMove.y;
-    console.log(dX, dY);
-    updatePos(gText, { x: gText.pos.x + dX, y: gText.pos.y + dY })
+
+    let canvasText = getTextById(gEditDiv.dataset.id)
+    updatePos(canvasText, { x: canvasText.pos.x + dX, y: canvasText.pos.y + dY })
+
+    gEditDiv.style.left = canvasText.pos.x+'px'
+    gEditDiv.style.top =  canvasText.pos.y+'px'
+
     renderCanvas()
 
     gLastMove = {
         x: clientX,
-        y: clientY
+        y: clientY,
     }
+
 }
 
 function onMouseUp() {
@@ -202,15 +237,21 @@ function editText(input) {
 function onSetTextProps() {
     let color = document.querySelector('#color').value
     let size = document.querySelector('#font-size').value
-    setTextProps(gText, color, size)
+    
+    gEditDiv.style.fontSize = size+'px'
+    console.log(gEditDiv);
+    let text = getTextById(gEditDiv.dataset.id)
+    setTextProps(text, color, size)
     renderCanvas()
 }
 
-
+//ben
 function onDeleteText() {
-    if (!gText) return;
-    deleteText(gText)
-    gText = null
+    if (!gEditDiv) return;
+    let canvasText = getTextById(gEditDiv.dataset.id)
+    deleteText(canvasText)
+    gEditDiv.style.display ='none'
+    gEditDiv = null
     renderCanvas()
     renderMode()
 }
@@ -229,18 +270,20 @@ function renderOutline(text, color = 'black') {
 }
 
 
+//ben
 function renderMode() {
     let uiEditEls = document.querySelectorAll('.ui-edit > *')
     for (let i = 0; i < uiEditEls.length; i++) {
-        uiEditEls[i].disabled = !gText
+        uiEditEls[i].disabled = !gEditDiv
     }
-
-    if (gText) {
-        document.querySelector('#font-size').value = gText.size
-        document.querySelector('#color').value = gText.color
+    let canvasText = getTextById(gEditDiv.dataset.id)
+    if (gEditDiv) {
+        document.querySelector('#font-size').value = canvasText.size
+        document.querySelector('#color').value = canvasText.color
     }
 
 }
+
 
 
 function downloadCanvas(elLink) {
@@ -248,15 +291,6 @@ function downloadCanvas(elLink) {
     renderCanvas()
     var content = gCanvas.toDataURL('image/jpeg');
     elLink.href = content
-}
-
-
-
-function getClickedText(offsetX, offsetY) {
-    return getTexts().find(text => {
-        return (offsetX > text.pos.x && offsetX < text.pos.x + text.outline.width)
-            && (offsetY > text.pos.y && offsetY < text.pos.y + text.outline.height)
-    })
 }
 
 
