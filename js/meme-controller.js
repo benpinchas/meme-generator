@@ -12,14 +12,14 @@ let gEditDiv = null
 function init() {
     gCanvas = document.querySelector('#meme-canvas');
     if (window.innerWidth < 800 || window.innerHeight < 600) {
-        gCanvas.width = screen.width-20;
+        gCanvas.width = screen.width - 20;
         gCanvas.height = screen.height / 2;
     }
 
     gCtx = gCanvas.getContext('2d');
     createTexts();
     renderImages();
-    
+
     renderCanvas()
     renderTexts();
 } //same 2
@@ -81,10 +81,10 @@ function renderCanvas() {
         gCtx.font = `${text.size}px Rubik`;
 
         gCtx.fillStyle = text.color;
-        gCtx.fillText(text.line, textX, textY+text.outline.height);
+        gCtx.fillText(text.line, textX, textY + text.outline.height);
 
         gCtx.lineWidth = 2;
-        gCtx.strokeText(text.line, textX, textY+text.outline.height);
+        gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
     });
@@ -114,10 +114,18 @@ function onKeyUp(elEditDiv) { //added
     let id = elEditDiv.dataset.id
     let textObj = getTextById(id)
     console.log(textObj);
-    updateTextContent(textObj,elEditDiv.innerText)
+    updateTextContent(textObj, elEditDiv.innerText)
 
     renderCanvas()
 }
+
+function onCanvasMouseDown(ev) {
+    if (ev.target.id === 'meme-canvas') {
+        gEditDiv = null
+        renderMode()
+    }
+}
+
 
 
 function onEditDivClick(ev, el) {
@@ -133,18 +141,18 @@ function onEditDivClick(ev, el) {
 }
 
 
-function onMouseMove({screenX, screenY}) {   
+function onMouseMove({ screenX, screenY }) {
     if (!gIsMouseDown || !gEditDiv) return
     console.log(event);
-    
+
     let dX = screenX - gLastMove.x;
     let dY = screenY - gLastMove.y;
 
     gEditDiv.style.left = parseInt(gEditDiv.style.left) + dX + 'px';
-    gEditDiv.style.top =  parseInt(gEditDiv.style.top) + dY + 'px';
+    gEditDiv.style.top = parseInt(gEditDiv.style.top) + dY + 'px';
 
     let canvasText = getTextById(gEditDiv.dataset.id)
-    
+
     updatePos(canvasText, { x: canvasText.pos.x + dX, y: canvasText.pos.y + dY })
     renderCanvas()
 
@@ -161,7 +169,7 @@ function onMouseUp() {
 }
 
 function onTouchStart(ev, elDiv) {
-   console.log('onTouchStart');
+    console.log('onTouchStart');
     gEditDiv = elDiv
     let touch = ev.touches[0];
     let clientX = touch.clientX
@@ -177,12 +185,12 @@ function onTouchStart(ev, elDiv) {
 function onTouchMove(ev) {
     console.log('here');
     // if (!gEditDiv) return; //b: and let the user scroll also
-    ev.preventDefault(); 
+    ev.preventDefault();
 
     var touch = ev.touches[0];
     let clientX = touch.clientX
     let clientY = touch.clientY
-    
+
 
     let dX = clientX - gLastMove.x;
     let dY = clientY - gLastMove.y;
@@ -190,8 +198,8 @@ function onTouchMove(ev) {
     let canvasText = getTextById(gEditDiv.dataset.id)
     updatePos(canvasText, { x: canvasText.pos.x + dX, y: canvasText.pos.y + dY })
 
-    gEditDiv.style.left = canvasText.pos.x+'px'
-    gEditDiv.style.top =  canvasText.pos.y+'px'
+    gEditDiv.style.left = canvasText.pos.x + 'px'
+    gEditDiv.style.top = canvasText.pos.y + 'px'
 
     renderCanvas()
 
@@ -237,8 +245,8 @@ function editText(input) {
 function onSetTextProps() {
     let color = document.querySelector('#color').value
     let size = document.querySelector('#font-size').value
-    
-    gEditDiv.style.fontSize = size+'px'
+
+    gEditDiv.style.fontSize = size + 'px'
     console.log(gEditDiv);
     let text = getTextById(gEditDiv.dataset.id)
     setTextProps(text, color, size)
@@ -250,7 +258,7 @@ function onDeleteText() {
     if (!gEditDiv) return;
     let canvasText = getTextById(gEditDiv.dataset.id)
     deleteText(canvasText)
-    gEditDiv.style.display ='none'
+    gEditDiv.style.display = 'none'
     gEditDiv = null
     renderCanvas()
     renderMode()
@@ -276,8 +284,9 @@ function renderMode() {
     for (let i = 0; i < uiEditEls.length; i++) {
         uiEditEls[i].disabled = !gEditDiv
     }
-    let canvasText = getTextById(gEditDiv.dataset.id)
+    
     if (gEditDiv) {
+        let canvasText = getTextById(gEditDiv.dataset.id)
         document.querySelector('#font-size').value = canvasText.size
         document.querySelector('#color').value = canvasText.color
     }
