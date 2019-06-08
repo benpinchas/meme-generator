@@ -102,15 +102,14 @@ function onMouseDown({ offsetX, offsetY }) {
         x: offsetX,
         y: offsetY
     }
-
     renderCanvas()
     renderMode()
-
+    
     let text = getClickedText(offsetX, offsetY)
     if (text) {
         gText = text
-        renderOutline(text)
-        setTimeout(onStartEditText, 0) //or onMouseUp
+        onStartEditText()
+        // setTimeout(onStartEditText, 0) 
         renderMode()
     }
 }
@@ -147,12 +146,13 @@ function onTouchStart(ev) {
 }
 
 function onTouchMove(ev) {
+    if (!gText) return; //b: and let the user scroll also
     ev.preventDefault(); 
     var touch = ev.touches[0];
     let clientX = touch.clientX
     let clientY = touch.clientY
 
-    if (!gText) return
+    
 
     console.log('here');
     let dX = clientX - gLastMove.x;
@@ -183,13 +183,11 @@ function onAddText() {
 }
 
 function onStartEditText() {
-    if (!gText) return
-
+    // if (!gText) return here
+    console.log('here');
     let elEditInput = document.querySelector('input#text-edit')
     elEditInput.value = gText.line
     elEditInput.focus();
-
-    console.log('elEditInput', elEditInput);
     renderOutline(gText)
 }
 
