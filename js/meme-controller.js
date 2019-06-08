@@ -221,8 +221,13 @@ function onMouseUp() {
 
 function onAddText() {
     addText()
-    gText = getTexts()[getTexts().length - 1]
     renderCanvas()
+
+    let editDivs = document.querySelectorAll('.text-box');
+    for (let i=0; i<editDivs.length; i++) {
+        editDivs[i].style.display = 'none'
+    } 
+    renderTexts()
 }
 
 function onStartEditText() {

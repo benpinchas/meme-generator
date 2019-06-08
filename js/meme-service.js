@@ -3,9 +3,9 @@ let gMeme = {}
 function createTexts() {
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff','1'),
-            createText('One click to edit', 37, { x: 20, y: 160 }, '#ffffff','2'),
-            createText('Double Click To Write', 64, { x: 10, y: 210 }, '#0084ff','3'),
+            createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff',getId()),
+            createText('One click to edit', 37, { x: 20, y: 160 }, '#ffffff',getId()),
+            createText('Double Click To Write', 64, { x: 10, y: 210 }, '#0084ff',getId()),
             createText('Drag Me', 44, { x: 10, y: 370 }, '#006b31','4')
         ]
     }
@@ -16,7 +16,7 @@ function addText(line, size, pos,color, id) {
     gMeme.txts.push(newText);
 }
 
-function createText(line='Add Text', size=25, pos={x: 100, y: 100}, color='#000000',id) {
+function createText(line='Add Text', size=25, pos={x: 100, y: 100}, color='#000000',id=getId()) {
     let outline = calcOutline(line, size);
     return { line, size, pos, color, id, outline};
 }
@@ -76,4 +76,18 @@ function getTextById(id) {
 
 function updateTextContent(textObj, line) {
     textObj.line = line
+}
+
+
+
+
+//UTIL
+function getId() {
+    var ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var ID_LENGTH = 5;
+    var rtn = '';
+    for (var i = 0; i < ID_LENGTH; i++) {
+        rtn += ALPHABET.charAt(Math.floor(Math.random() * ALPHABET.length));
+    }
+    return rtn;
 }
