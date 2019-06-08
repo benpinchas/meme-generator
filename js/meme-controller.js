@@ -19,22 +19,19 @@ function init() {
 
 
 
+//b: regex based filter
 function filterImages(str) {
+    let regex = new RegExp(str)
     return getImages().filter(image => {
-       return image.keywords.find(keyword => {
-            let lettersArr = keyword.split('')
-            lettersArr = lettersArr.splice(0, str.length, str.length)
-            lettersArr = lettersArr.join('');
-            console.log(lettersArr === str);
-            return lettersArr === str
+        return image.keywords.find(keyword => {
+            return keyword.match(regex)
         })
     })
 }
 
 
 function renderImages(searchStr) {
-    let images =  (searchStr)?  filterImages(searchStr) : getImages()
-
+    let images = (searchStr) ? filterImages(searchStr) : getImages()
     let strHTMLs = images.map(image => {
         return `
         <div class="flex grid-item flex-center">
@@ -45,6 +42,9 @@ function renderImages(searchStr) {
 
     document.querySelector('.images').innerHTML = strHTMLs.join('');
 }
+
+
+
 
 function renderImage(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
@@ -73,13 +73,13 @@ function renderCanvas() {
         // gCtx.beginPath();
         let textX = text.pos.x;
         let textY = text.pos.y;
-        
+
         gCtx.font = `${text.size}px Impact`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
-        
+
         gCtx.strokeStyle = 'black';
-        gCtx.lineWidth = text.size/17;
+        gCtx.lineWidth = text.size / 17;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
@@ -226,3 +226,41 @@ function getClickedText(offsetX, offsetY) {
 
 
 
+
+
+
+
+
+/*
+function filterImages(str) {
+    return getImages().filter(image => {
+       return image.keywords.find(keyword => {
+            let lettersArr = keyword.split('')
+            lettersArr = lettersArr.splice(0, str.length, str.length)
+            lettersArr = lettersArr.join('');
+            console.log(lettersArr === str);
+            return lettersArr === str
+        })
+    })
+
+    //one letter mistake:
+
+        let regexes = []
+    for (let i = 0; i < str.length; i++) {
+        let letters = str.split('')
+        letters.splice(i+1, 0, '?')
+        let regex = letters.join('')
+        regex = new RegExp(regex)
+        regexes.push(regex)
+        console.log(regexes);
+    }
+    return getImages().filter(image => {
+        return image.keywords.find(keyword => {
+            return regexes.find(regex => {
+                if (keyword.match(regex)) return true;
+            })
+        })
+    })
+
+
+} */

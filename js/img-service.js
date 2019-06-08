@@ -24,7 +24,7 @@ var gImages = [
     },
     {
         id: 1, url: 'img/putin.jpg',
-        keywords: ['president', 'russia', 'europe']
+        keywords: ['president', 'russia', 'europe', 'putin']
     },
     {
         id: 1, url: 'img/dancing-women.jpg',
