@@ -228,6 +228,9 @@ img {
         flex-direction: column;
     }
 
+    canvas {
+        
+    }
 
     .images {
         grid-template-columns: repeat(4, minmax(20px, 23vw));

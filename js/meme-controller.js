@@ -67,7 +67,7 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     let imgSrc = getImgSrc();
     if (imgSrc) {
-        let imgEl = document.querySelector(`[src="${imgSrc}"`);
+        let imgEl = document.querySelector(`[src="${imgSrc}"]`);
         renderImage(imgEl);
     }
     if (gText) renderOutline(gText)
@@ -147,7 +147,7 @@ function onTouchStart(ev) {
 }
 
 function onTouchMove(ev) {
-    // ev.preventDefault(); 
+    ev.preventDefault(); 
     var touch = ev.touches[0];
     let clientX = touch.clientX
     let clientY = touch.clientY
