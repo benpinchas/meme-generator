@@ -21,8 +21,20 @@
     box-sizing: border-box;
 }
 
+
+
 body {
     margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* dont remove */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 a {
@@ -30,11 +42,6 @@ a {
     text-decoration: none;
 }
 
-/*  */
-
-html {
-    scroll-behavior: smooth;
-}
 section {
     padding-top: 50px;
 }
@@ -229,7 +236,7 @@ img {
     }
 
     canvas {
-        
+
     }
 
     .images {
