@@ -21,14 +21,15 @@
     box-sizing: border-box;
 }
 
-
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
-}
-
-html {
-    scroll-behavior: smooth;
+    font-family: Rubik;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* dont remove */
@@ -40,18 +41,30 @@ html, body {
 a {
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
+}
+
+input, button {
+    /* padding: 3px; */
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+input[type=search] {
+    font-family: Impact;
+    font-size: 34px;
+}
+
+input:disabled, button:disabled {
+    opacity: 0.3;
+    cursor: default;
 }
 
 section {
-    padding-top: 50px;
+    margin-top: 80px;
 }
 
-body {
-    overflow-x: hidden;
-    font-family: Rubik;
-    width: 100vw;
-    height: 100vh;
-}
+
 
 header {
     background-color: black;
@@ -69,21 +82,6 @@ header {
 
 header a:hover {
     color: #2eb398;
-}
-
-input, button {
-    padding: 3px;
-    border-radius: 7px;
-}
-
-input {
-    font-family: Impact;
-    cursor: pointer;
-}
-
-input:disabled, button:disabled {
-    opacity: 0.3;
-    cursor: default;
 }
 
 .hidden {
@@ -171,13 +169,17 @@ img.selected {
     box-shadow: 9px 11px 11px #170606;
     z-index: 10;
     height: 20vw !important;
-    position: absolute;
+    /* position: absolute; */
     transition: .4s;
 }
 
+.ui{
+    width: 95%;
+    max-width: 800px;
+}
 .ui-edit {
-    width: 40%;
-    min-width: 350px;
+    width: 100%;
+    /* min-width: 350px; */
 }
 
 .ui-edit>* {
@@ -237,6 +239,11 @@ img {
 
     canvas {
 
+    }
+
+    input[type=search] {
+        font-size: 17px;
+        width: 50vw;
     }
 
     .images {

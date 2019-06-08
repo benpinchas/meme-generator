@@ -23,8 +23,9 @@
         </div>
     </header>
     <section id="sect-canvas">
-        <div class="ui container">
-            <div class="container-horizontal">
+        <div class="container canvas-container">
+            
+            <div class="ui container">
                 <div class="container-horizontal">
                     <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
                     <button id="add-text" class="pointer" onclick="onAddText();">Add New Text</button>
@@ -34,15 +35,13 @@
                     <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
                     <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
                         disabled>
-
                     <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
                 </div>
             </div>
-        </div>
-        <div class="container canvas-container">
+
             <canvas id="meme-canvas" width="800" height="600" onmousedown="onMouseDown(event)"
-                onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" 
-                ontouchstart="onTouchStart(event)" ontouchmove="onTouchMove(event)">
+                onmousemove="onMouseMove(event)" onmouseup="onMouseUp()" ontouchstart="onTouchStart(event)"
+                ontouchmove="onTouchMove(event)">
                 Please upgrade your internet browser to enjoy our meme generator
             </canvas>
 
@@ -51,8 +50,7 @@
             </a>
 
             <div style="text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
-                double click a text for text edit <br>
-                one click for edit color / font-size / delete <br>
+                one click for edit text / color / font-size / delete <br>
                 you can drag the texts and add new ones <br>
             </div>
             <div id="sizing" class="hidden inline-block"></div>
@@ -61,7 +59,7 @@
     </section>
     <section id="sect-images">
         <div class="images-container container">
-            <div>
+            <div class="container">
                 <input type="search" name="" id="" placeholder="search" onkeyup="renderImages(this.value)">
             </div>
             <div class="grid images" id="images-grid">
