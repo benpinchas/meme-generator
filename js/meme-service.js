@@ -6,8 +6,8 @@ function createTexts(canvasWidth=800, canvasHeight=600) {
     if (!gMeme.txts) {
         gMeme.txts = [
             createText('WELCOME', canvasWidth/16, { x: 0, y: row }, '#ffffff',getId()),
-            createText('One click to edit', canvasWidth/13, { x: col, y: row*2}, '#0084ff',getId()),
-            createText('Drag Me', canvasWidth/20, { x: col*2, y: row*5}, '#006b31','4')
+            createText('One click to edit', canvasWidth/13, { x: col, y: row*4}, '#0084ff',getId()),
+            createText('Drag Me', canvasWidth/20, { x: col*2, y: row*7}, '#006b31','4')
         ]
     }
 }

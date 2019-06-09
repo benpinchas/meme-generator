@@ -67,24 +67,11 @@ a[download]:hover {
     order: 3;
 }
 
-button:focus, input:focus {
-    outline: none;
-}
-
-button {
+input, button {
     /* padding: 3px; */
     border-radius: 7px;
     cursor: pointer;
 }
-
-input[type=text], input[type=search] {
-    cursor: pointer;
-    border: none;
-    border-bottom: 1px solid black;
-    border-radius: 0px;
-    text-align: center;
-}
-
 
 .ui button {
     font-size: 17px;
@@ -136,7 +123,6 @@ header a:hover {
 .hidden {
     position: absolute;
     left: -5000px;
-    transition: 0.5s;
 }
 
 .container {
@@ -204,9 +190,9 @@ button:disabled {
 }
 
 .images>div>img:hover:not(.selected) {
-    opacity: 0.9;
-    /* transform: scale(1.1); */
-    /* transition: .2s; */
+    /* opacity: 0.9; */
+    transform: scale(1.1);
+    transition: .2s;
 }
 
 img.selected {
@@ -365,14 +351,13 @@ span.keyword:hover {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    transition: 0.5s;
 }
 
 .image-keywords-container>.image-keywords {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .image-keywords-container>.image-keywords>span {
@@ -385,12 +370,10 @@ span.keyword:hover {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    text-transform: capitalize;
 }
 
 .image-keywords-container input[type=text] {
     font-size: 17px;
-    margin-bottom: 20px;
 }
 
 .image-keywords-container i {
