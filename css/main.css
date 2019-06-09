@@ -151,11 +151,6 @@ header a:hover {
     min-width: 10px;
 }
 
-/* .ui {
-    width: 700px;
-    background-color: aquamarine;
-} */
-
 button:disabled {
     color: black;
 }
@@ -300,7 +295,6 @@ canvas {
     }
     .ui {
         flex-direction: column;
-        order: 1;
     }
 
     input[type=search] {
@@ -328,35 +322,6 @@ canvas {
         flex-grow: 1;
         text-align: center;
     }
-
-
-
-    .ui-edit {
-        display: none;
-    }
-    .canvas-wrap>.ui-edit {
-        /* transform: rotate(-90deg);
-        width: 10%;
-        align-self: flex-end; */
-    
-        transform: rotate(-90deg);
-        /* width: 93%; */
-        width: 70%;
-        /* align-self: flex-end; */
-        position: absolute;
-        /* left: 50%; */
-        left: 61%;
-    
-        /* top: 60%; */
-        top: 46%;
-        display: flex;
-        justify-content: space-between;
-        background-color: rgba(128, 128, 128, 0.061);
-    }
-    
-
-
-
 
 }
 
@@ -389,6 +354,14 @@ canvas {
 }
 
 
+/* 
+
+div {
+    resize: both;
+    overflow: auto;
+    font-size: auto;
+    min-width: 50px;
+}  */
 
 
 

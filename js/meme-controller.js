@@ -115,9 +115,8 @@ function renderEditDivs() {
 
 function onKeyUp(elEditDiv) { //added
     let id = elEditDiv.dataset.id
-    let textObj = getTextById(id)
-    console.log(textObj);
-    updateTextContent(textObj, elEditDiv.innerText)
+    let canvasText = getTextById(id)
+    updateTextContent(canvasText, elEditDiv.innerText)
 
     renderCanvas()
 }
