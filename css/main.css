@@ -45,10 +45,30 @@ a {
     cursor: pointer;
 }
 
+a[download] {
+    color: blue;
+}
+a[download]:hover {
+    text-decoration: underline;
+}
+
+.canvas-container>a[download] {
+    font-size: 19px;
+    order: 3;
+}
+
 input, button {
     /* padding: 3px; */
     border-radius: 7px;
     cursor: pointer;
+}
+
+.ui button {
+    font-size: 17px;
+}
+
+input[type=color] {
+    font-size: 17px;
 }
 
 input[type=search] {
@@ -109,6 +129,11 @@ header a:hover {
     z-index: 200; */
 }
 
+canvas {
+    cursor: crosshair;
+    border: 1px solid red;
+}
+
 .canvas-container>* {
     margin-bottom: 20px;
 }
@@ -123,11 +148,6 @@ header a:hover {
 
 .logo {
     margin: 0 30px;
-}
-
-canvas {
-    border: 1px solid red;
-    cursor: pointer;
 }
 
 #sizing {
@@ -271,6 +291,7 @@ img {
     }
     .ui {
         flex-direction: column;
+        order: 1;
     }
 
     input[type=search] {
