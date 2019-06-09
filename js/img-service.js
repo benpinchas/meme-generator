@@ -53,3 +53,24 @@ function getImageById(id) {
     })
 }
 
+
+
+function addKeyWord(image, keyword) {
+    image.keywords.push(keyword)
+    saveImages()
+}
+
+function removeKeyword(image, keywordIdx) {
+    image.keywords.splice(keywordIdx, 1)
+    saveImages()
+}
+
+
+function saveImages() {
+    
+}
+
+
+function loadImages() {
+
+}

@@ -350,7 +350,7 @@ span.keyword:hover {
     color: orange;
 }
 
-.image-keywords {
+.image-keywords-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -358,13 +358,13 @@ span.keyword:hover {
     width: 100%;
 }
 
-.image-keywords>div {
+.image-keywords-container>.image-keywords {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.image-keywords>div>span {
+.image-keywords-container>.image-keywords>span {
     /* flex-grow: 1; */
     background-color: lightgray;
     /* display: inline-block; */

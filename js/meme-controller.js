@@ -3,7 +3,7 @@ let gCanvas;
 let gCtx;
 let gIsMouseDown = false //flag
 let gLastMove = null
-let prevImgEl = null;
+let gImgEl = null;
 
 let gEditDiv = null
 //same1
@@ -79,7 +79,9 @@ function renderImages(searchStr) {
     let strHTMLs = images.map(image => {
         return `
         <div class="flex grid-item flex-center">
-            <img onclick="onClickImage(this, '${image.id}')" src="${image.url}" alt="">
+            <img onclick="onClickImage(this, '${image.id}')"
+            data-id="${image.id}"
+            src="${image.url}" alt="">
         </div>
         `
     })
@@ -93,15 +95,31 @@ function renderImage(img) {
 }
 
 
+function onAddKeyword(elInput) {
+    let image = getImageById(gImgEl.dataset.id)
+    addKeyWord(image, elInput.value)
+    elInput.value = ''
+    renderImageKeywords(image)
+}
+
+function onRemoveKeyword(keywordIdx) { //ben mark
+    console.log(keywordIdx);
+    let image = getImageById(gImgEl.dataset.id)
+    removeKeyword(image, keywordIdx)
+    renderImageKeywords(image)
+}
+
 function renderImageKeywords(image) {
-    
-
-
-    document.querySelector('.image-keywords span').innerHTML = 'aa' 
+    let strHTMLs = image.keywords.map((keyword, idx) => {
+        return `
+            <span>${keyword} <button onclick="onRemoveKeyword(${idx})">X</button></span>
+        `
+    })
+    document.querySelector('.image-keywords').innerHTML = strHTMLs.join('') 
 }
 
 function onClickImage(imgEl, id) {
-    if (prevImgEl) prevImgEl.classList.remove('selected')
+    if (gImgEl) gImgEl.classList.remove('selected')
 
     let image = getImageById(id)
     renderImageKeywords(image)
@@ -109,7 +127,7 @@ function onClickImage(imgEl, id) {
     imgEl.classList.add('selected')
     updateImgSrc(imgEl.getAttribute('src'));
     renderCanvas();
-    prevImgEl = imgEl;
+    gImgEl = imgEl;
 }
 
 function renderCanvas() {
