@@ -195,8 +195,8 @@ img.selected {
 }
 .ui-edit {
     width: 100%;
-    position: absolute;
-    background-color: gray;
+    /* position: absolute; */
+    /* background-color: gray; */
     /* min-width: 350px; */
 }
 
@@ -297,12 +297,12 @@ canvas {
     }
 
 
-    .ui-edit {
+    /* .ui-edit {
         transform: rotate(-90deg);
         top: 45%;
         left: 53%;
         width: 90%; 
-    }
+    } */
 
     input[type=search] {
         font-size: 17px;
