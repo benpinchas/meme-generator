@@ -266,6 +266,7 @@ canvas {
     z-index: 10;
     position: absolute;
     top:0;
+    font-family: Impact;
     font-size: 50px;
     padding: 13px 0;
     padding-right: 25px;

@@ -82,7 +82,7 @@ function renderCanvas() {
         let textY = text.pos.y;
 
 
-        gCtx.font = `${text.size}px Rubik`;
+        gCtx.font = `${text.size}px impact`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
