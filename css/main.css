@@ -31,7 +31,7 @@ html {
 
 body {
     margin: 0;
-    font-family: Rubik;
+    font-family: 'Lato-Regular';
     width: 100vw;
     height: 100vh;
 }
@@ -89,7 +89,7 @@ section {
 
 
 header {
-    background-color: black;
+    background-color: #323232;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -100,6 +100,10 @@ header {
     left: 0;
     width: 100vw;
     height: 40px;
+}
+header>.logo {
+    max-height: 40px;
+    /* margin: 0; */
 }
 
 header a:hover {
@@ -356,6 +360,9 @@ canvas {
 
 .uppercase {
     text-transform: uppercase;
+}
+.capitalize {
+    text-transform: capitalize;
 }
 
 .pointer {
