@@ -52,6 +52,7 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
+
 section {
     padding-top: 50px;
 }
@@ -102,14 +103,16 @@ header {
     width: 100vw;
     height: 50px;
 }
+
 .header-container {
     /* padding: 0 auto; */
-    height: 30px;   
+    height: 30px;
     margin: 10px auto;
     max-width: 800px;
     display: flex;
     align-items: center;
 }
+
 .header-container>*:not(:first-child) {
     margin-left: 20px;
 }
@@ -246,9 +249,7 @@ img {
 }
 
 .about-us>img {
-    background-color: blue;
-    width: 30%;
-    height: 200px;
+    height: 80%;
 }
 
 .about-us>div {
