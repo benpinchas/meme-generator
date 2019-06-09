@@ -91,7 +91,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 30;
     position: fixed;
     top: 0;
     left: 0;
@@ -195,6 +195,8 @@ img.selected {
 }
 .ui-edit {
     width: 100%;
+    position: absolute;
+    background-color: gray;
     /* min-width: 350px; */
 }
 
@@ -248,9 +250,6 @@ img {
 .canvas-wrap {
     position: relative;
     /* align-items: center; */
-}
-.canvas-wrap>.ui-edit {
-  display: none;
 }
 
 

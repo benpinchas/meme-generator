@@ -11,7 +11,6 @@
 </head>
 
 <body onload="init()">
-
     <header>
         <div class="left-nav">
             <a class="uppercase" href="#sect-canvas">Canvas</a>
@@ -31,28 +30,35 @@
                     <button id="add-text" class="pointer" onclick="onAddText();">Add New Text</button>
                 </div>
 
+                <!-- <div class="ui-edit container-horizontal">
+                    <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+                    <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
+                        disabled>
+                    <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
+                </div> -->
+            </div>
+
+            <!-- b: NEEDED FOR THE EDITABLE DIVS -->
+            <div class="canvas-wrap" onmousedown="onCanvasMouseDown(event)" onmousemove="onMouseMove(event)"
+                onmouseup="onMouseUp()" ontouchmove="onTouchMove(event)">
+
+
                 <div class="ui-edit container-horizontal">
                     <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
                     <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
                         disabled>
                     <input type="color" name="color" id="color" onchange="onSetTextProps()" disabled>
                 </div>
-            </div>
 
-            <!-- b: NEEDED FOR THE EDITABLE DIVS -->
-            <div class="canvas-wrap" 
-                onmousedown="onCanvasMouseDown(event)"
-                onmousemove="onMouseMove(event)" 
-                onmouseup="onMouseUp()"
-
-                ontouchmove="onTouchMove(event)"
-                >
                 <span></span>
+
+
+
                 <canvas id="meme-canvas" width="800" height="600">
                     Please upgrade your internet browser to enjoy our meme generator
                 </canvas>
 
-             
+
 
             </div>
             <!-- b: END -->
@@ -60,7 +66,8 @@
                 Save as Jpeg
             </a>
 
-            <div style="order: 3; text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
+            <div
+                style="order: 3; text-align:center; margin:20px; padding: 10px; background-color: white; border-radius: 7px;">
                 one click for edit text / color / font-size / delete <br>
                 you can drag the texts and add new ones <br>
             </div>
