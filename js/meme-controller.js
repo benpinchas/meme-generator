@@ -62,7 +62,7 @@ function renderKeywords() {
 }
 
 
-//b: regex based filter
+//regex based filter
 function filterImages(str) {
     let regex = new RegExp(str, 'i')
     return getImages().filter(image => {
@@ -86,11 +86,6 @@ function renderImages(searchStr) {
     })
 
     document.querySelector('.images').innerHTML = strHTMLs.join('');
-}
-
-//TODO ??? insert to on image click
-function renderImage(img) {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 
@@ -126,7 +121,6 @@ function renderImageKeywords(image) {
 
 function onClickImage(imgEl, id) {
     if (gImgEl) gImgEl.classList.remove('selected')
-
     let image = getImageById(id)
     renderImageKeywords(image)
 
@@ -134,6 +128,10 @@ function onClickImage(imgEl, id) {
     updateImgSrc(imgEl.getAttribute('src'));
     renderCanvas();
     gImgEl = imgEl;
+}
+
+function renderImage(img) {
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 function renderCanvas() {
@@ -156,7 +154,7 @@ function renderCanvas() {
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
-        gCtx.lineWidth = text.size / 17;
+        gCtx.lineWidth = text.size / 17; //sort of dynamic stroke based on font size
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
@@ -179,7 +177,8 @@ function renderEditDivs() {
         
         ontouchstart="onTouchStart(event, this)"
         >
-        ${text.line}</div>`
+            ${text.line}
+        </div>`
         document.querySelector('.canvas-wrap span').innerHTML += editDiv;
     }
 
@@ -196,7 +195,7 @@ function onKeyUp(elEditDiv) { //added
 function onCanvasMouseDown(ev) {
     if (ev.target.id === 'meme-canvas') {
         gEditDiv = null
-        renderMode()
+        renderMode() // disbale / undisable ui-edit
     }
 }
 
@@ -239,7 +238,10 @@ function onMouseMove({ screenX, screenY }) {
 function onMouseUp() {
     gIsMouseDown = false;
     gLastMove = null;
+    //keep gEditDiv to be able edit him.
 }
+
+
 
 function onTouchStart(ev, elDiv) {
     gEditDiv = elDiv
@@ -256,7 +258,7 @@ function onTouchStart(ev, elDiv) {
 
 function onTouchMove(ev) {
     if (ev.target.id === 'ui-edit') return;
-    if (!gEditDiv) return; //b: and let the user scroll also
+    if (!gEditDiv) return; 
     ev.preventDefault();
 
     var touch = ev.touches[0];
@@ -282,11 +284,10 @@ function onTouchMove(ev) {
 
 }
 
-function onMouseUp() {
+function onTouchEnd() {
     gIsMouseDown = false;
-    gMouseDownPos = null;
-    // gText = null;
     gLastMove = null;
+    //keep gEditDiv to be able edit him.
 }
 
 
@@ -340,6 +341,8 @@ function onDeleteText() {
     renderMode()
 }
 
+
+// not in use 
 function renderOutline(text, color = 'black') {
     let outline = text.outline //mark 
     let outlineHeight = Math.max(text.size, outline.height)
@@ -354,7 +357,6 @@ function renderOutline(text, color = 'black') {
 }
 
 
-//ben
 function renderMode() {
     let uiEditEls = document.querySelectorAll('.ui-edit > *')
     for (let i = 0; i < uiEditEls.length; i++) {

@@ -41,8 +41,13 @@
             </div>
 
             <!-- b: NEEDED FOR THE EDITABLE DIVS -->
-            <div class="canvas-wrap" onmousedown="onCanvasMouseDown(event)" onmousemove="onMouseMove(event)"
-                onmouseup="onMouseUp()" ontouchmove="onTouchMove(event)">
+            <div class="canvas-wrap" 
+                onmousedown="onCanvasMouseDown(event)" 
+                onmousemove="onMouseMove(event)"
+                onmouseup="onMouseUp()" 
+
+                ontouchmove="onTouchMove(event)" 
+                ontouchend="onTouchEnd()">
 
                 <span></span>
 
