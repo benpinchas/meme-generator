@@ -14,19 +14,20 @@ function init() {
     if (window.innerWidth < 800 || window.innerHeight < 600) {
         gCanvas.width = screen.width - 20;
         gCanvas.height = screen.height / 2;
-
         createTexts(gCanvas.width, gCanvas.height)
     } else {
         createTexts();
     }
     gCtx = gCanvas.getContext('2d');
-   
+    
+    createImages()
     renderImages();
-
+    renderKeywords()
+    
     renderCanvas()
     renderEditDivs();
 
-    renderKeywords()
+    
 } //same 2
 
 
@@ -112,7 +113,11 @@ function onRemoveKeyword(keywordIdx) { //ben mark
 function renderImageKeywords(image) {
     let strHTMLs = image.keywords.map((keyword, idx) => {
         return `
-            <span>${keyword} <button onclick="onRemoveKeyword(${idx})">X</button></span>
+            <span>
+                ${keyword} 
+                <i class="fas fa-times-circle" 
+                onclick="onRemoveKeyword(${idx})"></i>
+                </span>
         `
     })
     document.querySelector('.image-keywords-container').classList.remove('hidden')

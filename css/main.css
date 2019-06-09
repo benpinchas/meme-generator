@@ -140,7 +140,7 @@ header a:hover {
 }
 
 .canvas-container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -366,13 +366,19 @@ span.keyword:hover {
     border-radius: 7px;
     padding: 5px;
     margin: 5px;
-    display: inline-flex;
-    /* justify-content: center;
-    align-items: center; */
+    min-width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .image-keywords-container input[type=text] {
     font-size: 17px;
+}
+
+.image-keywords-container i {
+    color: rgb(44, 36, 36);
+    margin-left: 15px;
 }
 
 @media (max-width:670px) {
