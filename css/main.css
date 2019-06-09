@@ -140,11 +140,6 @@ header a:hover {
     align-items: center;
 }
 
-.canvas-container {
-    /* background-color: red;
-    z-index: 200; */
-}
-
 .canvas-container>* {
     margin-bottom: 20px;
 }
