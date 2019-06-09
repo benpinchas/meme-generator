@@ -183,7 +183,7 @@ function onTouchStart(ev, elDiv) {
 }
 
 function onTouchMove(ev) {
-    console.log('here');
+    if (ev.target.id === 'ui-edit') return;
     if (!gEditDiv) return; //b: and let the user scroll also
     ev.preventDefault();
 
