@@ -27,7 +27,6 @@ function init() {
     renderEditDivs();
 
     renderKeywords()
-
 } //same 2
 
 
@@ -80,7 +79,7 @@ function renderImages(searchStr) {
     let strHTMLs = images.map(image => {
         return `
         <div class="flex grid-item flex-center">
-            <img onclick="onClickImage(this)" src="${image.url}" alt="">
+            <img onclick="onClickImage(this, '${image.id}')" src="${image.url}" alt="">
         </div>
         `
     })
@@ -88,13 +87,25 @@ function renderImages(searchStr) {
     document.querySelector('.images').innerHTML = strHTMLs.join('');
 }
 
-
+//TODO ??? insert to on image click
 function renderImage(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
-function onClickImage(imgEl) {
+
+function renderImageKeywords(image) {
+    
+
+
+    document.querySelector('.image-keywords span').innerHTML = 'aa' 
+}
+
+function onClickImage(imgEl, id) {
     if (prevImgEl) prevImgEl.classList.remove('selected')
+
+    let image = getImageById(id)
+    renderImageKeywords(image)
+
     imgEl.classList.add('selected')
     updateImgSrc(imgEl.getAttribute('src'));
     renderCanvas();
