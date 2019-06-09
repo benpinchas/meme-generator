@@ -261,7 +261,6 @@ img {
 /* b: text-box is the class of the editable div */
 .text-box {
     background-color: transparent;
-    border: 1px dotted black;
     padding: 20px;
     cursor: pointer;
     z-index: 10;
@@ -273,6 +272,10 @@ img {
     white-space: nowrap;
     color: transparent;
     caret-color: blue;
+}
+
+.text-box:focus {
+    border: 1px dotted blue;
 }
 
 
