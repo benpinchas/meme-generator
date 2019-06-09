@@ -14,14 +14,17 @@ function init() {
     if (window.innerWidth < 800 || window.innerHeight < 600) {
         gCanvas.width = screen.width - 20;
         gCanvas.height = screen.height / 2;
-    }
 
+        createTexts(gCanvas.width, gCanvas.height)
+    } else {
+        createTexts();
+    }
     gCtx = gCanvas.getContext('2d');
-    createTexts();
+   
     renderImages();
 
     renderCanvas()
-    renderTexts();
+    renderEditDivs();
 } //same 2
 
 
@@ -71,15 +74,15 @@ function renderCanvas() {
         renderImage(imgEl);
     }
 
-    // render texts
+    // render canvas texts
     let texts = getTexts();
     texts.forEach(text => {
         // gCtx.beginPath();
         let textX = text.pos.x;
         let textY = text.pos.y;
 
-        gCtx.font = `${text.size}px Rubik`;
 
+        gCtx.font = `${text.size}px Rubik`;
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
@@ -91,7 +94,7 @@ function renderCanvas() {
 }
 
 //b: editDivs rendering based on canvasTexts position
-function renderTexts() {
+function renderEditDivs() {
     for (var i = 0; i < getTexts().length; i++) {
         let text = getTexts()[i]
         let editDiv = `<div 
@@ -168,7 +171,6 @@ function onMouseUp() {
 }
 
 function onTouchStart(ev, elDiv) {
-    console.log('onTouchStart');
     gEditDiv = elDiv
     let touch = ev.touches[0];
     let clientX = touch.clientX
@@ -183,7 +185,7 @@ function onTouchStart(ev, elDiv) {
 
 function onTouchMove(ev) {
     console.log('here');
-    // if (!gEditDiv) return; //b: and let the user scroll also
+    if (!gEditDiv) return; //b: and let the user scroll also
     ev.preventDefault();
 
     var touch = ev.touches[0];
@@ -225,7 +227,7 @@ function onAddText() {
     for (let i=0; i<editDivs.length; i++) {
         editDivs[i].style.display = 'none'
     } 
-    renderTexts()
+    renderEditDivs()
 }
 
 function onStartEditText() {

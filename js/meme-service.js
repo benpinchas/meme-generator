@@ -1,12 +1,14 @@
 let gMeme = {}
 
-function createTexts() {
+function createTexts(canvasWidth=800, canvasHeight=600) {
+    let col = canvasWidth/10
+    let row = canvasHeight/10
     if (!gMeme.txts) {
         gMeme.txts = [
-            createText('WELCOME', 50, { x: 10, y: 60 }, '#ffffff',getId()),
-            createText('One click to edit', 37, { x: 20, y: 160 }, '#ffffff',getId()),
-            createText('Double Click To Write', 64, { x: 10, y: 210 }, '#0084ff',getId()),
-            createText('Drag Me', 44, { x: 10, y: 370 }, '#006b31','4')
+            createText('WELCOME', canvasWidth/16, { x: 0, y: 0 }, '#ffffff',getId()),
+            createText('One click to edit', canvasWidth/17, { x: col, y: row*2 }, '#ffffff',getId()),
+            createText('Double Click To Write', canvasWidth/13, { x: 0, y: row*4}, '#0084ff',getId()),
+            createText('Drag Me', canvasWidth/20, { x: col*2, y: row*7}, '#006b31','4')
         ]
     }
 }

@@ -104,6 +104,11 @@ header a:hover {
     align-items: center;
 }
 
+.canvas-container {
+    /* background-color: red;
+    z-index: 200; */
+}
+
 .canvas-container>* {
     margin-bottom: 20px;
 }
@@ -229,17 +234,43 @@ img {
     min-width: 100px;
 }
 
+/* b: needed for the editable divs */
+.canvas-wrap {
+    position: relative;
+}
+/* b: text-box is the class of the editable div */
+.text-box {
+    background-color: transparent;
+    border: 1px dotted black;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 10;
+    position: absolute;
+    top:0;
+    font-size: 50px;
+    padding: 13px 0;
+    padding-right: 25px;
+    white-space: nowrap;
+    color: transparent;
+    caret-color: blue;
+}
+
+
+
 @media (max-width:670px) {
+
+    .text-box {
+        padding: 5px 0;
+        padding-right: 10px;
+    }
+
+
     header {
         background-color: black;
         padding: 30px 0;
     }
     .ui {
         flex-direction: column;
-    }
-
-    canvas {
-
     }
 
     input[type=search] {
@@ -297,25 +328,7 @@ img {
     cursor: pointer;
 }
 
-/* b: needed for the editable divs */
-.canvas-wrap {
-    position: relative;
-}
-/* b: text-box is the class of the editable div */
-.text-box {
-    background-color: transparent;
-    border: 1px dotted black;
-    padding: 20px;
-    cursor: pointer;
-    z-index: 100;
-    position: absolute;
-    top:0;
-    font-size: 50px;
-    padding: 13px 0;
-    padding-right: 25px;
-    color: transparent;
-    caret-color: blue;
-}
+
 
 
 
