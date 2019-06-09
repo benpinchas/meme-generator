@@ -99,6 +99,7 @@ function onAddKeyword(elInput) {
     addKeyWord(image, elInput.value)
     elInput.value = ''
     renderImageKeywords(image)
+    renderKeywords()
 }
 
 function onRemoveKeyword(keywordIdx) { //ben mark
@@ -106,6 +107,7 @@ function onRemoveKeyword(keywordIdx) { //ben mark
     let image = getImageById(gImgEl.dataset.id)
     removeKeyword(image, keywordIdx)
     renderImageKeywords(image)
+    renderKeywords()
 }
 
 function renderImageKeywords(image) {
