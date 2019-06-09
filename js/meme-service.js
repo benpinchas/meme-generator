@@ -17,7 +17,7 @@ function addText(line, size, pos,color, id) {
     gMeme.txts.push(newText);
 }
 
-function createText(line='Add Text', size=25, pos={x: 100, y: 100}, color='#000000',id=getId()) {
+function createText(line='Add Text', size=45, pos={x: 100, y: 100}, color='#ffffff',id=getId()) {
     let outline = calcOutline(line, size);
     return { line, size, pos, color, id, outline};
 }
