@@ -109,7 +109,9 @@ header {
     display: flex;
     align-items: center;
 }
-
+img.logo {
+    height: 30px;
+}
 .header-container>* {
     margin-left: 20px;
 }
@@ -169,7 +171,7 @@ button:disabled {
 }
 
 .images {
-    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    grid-template-columns: repeat(4, minmax(100px, 23vw));
     height: auto;
 }
 
@@ -216,10 +218,6 @@ img.selected {
 
 .ui-edit>* {
     cursor: pointer;
-}
-
-img {
-    height: 30px;
 }
 
 .inline-block {
@@ -400,11 +398,10 @@ span.keyword:hover {
         max-width: 23vw;
     }
     .about-us {
-        flex-direction: column;
-        padding-top: 20px;
+        /* flex-direction: column; */
+        padding: 20px;
     }
     .about-us>img {
-        width: 60%;
         flex-grow: 1;
     }
     .about-us>div {
