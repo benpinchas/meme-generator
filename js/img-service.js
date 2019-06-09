@@ -65,10 +65,13 @@ function getImageById(id) {
 
 
 function addKeyWord(image, keyword) {
-    image.keywords.push(keyword)
-    saveImages()
+    if (image.keywords.indexOf(keyword.toLowerCase()) === -1 ) {
+        image.keywords.push(keyword.toLowerCase())
+        saveImages()
+    } else {
+        console.log('Keyword Already exist');
+    }
 }
-
 function removeKeyword(image, keywordIdx) {
     image.keywords.splice(keywordIdx, 1)
     saveImages()
