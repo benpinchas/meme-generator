@@ -25,8 +25,43 @@ function init() {
 
     renderCanvas()
     renderEditDivs();
+
+    renderKeywords()
+
 } //same 2
 
+
+
+//b: TODO: write function im img-servise that returns keywordsMap;
+function renderKeywords() {
+    let elKeyWords = document.querySelector('.keywords');
+    let keywordsMap = {}
+    getImages().forEach(image => {
+        image.keywords.forEach(keyword => {
+            if(keywordsMap[keyword]) {
+                keywordsMap[keyword]++
+            } else {
+                keywordsMap[keyword] = 1;
+            }
+        })
+    })
+
+    let strHTMLs = [`<span class="keyword" style="font-size:23px" onclick="renderImages()"> All(${getImages().length})</span>`]
+    for (const keyword in keywordsMap) {
+        let fontSize = Math.min(15 + keywordsMap[keyword]*2, 31)
+        let strHTML = `
+        <span class="keyword" 
+        style="font-size:${fontSize}px"
+        onclick="renderImages('${keyword}')"
+        >
+            ${keyword}(${keywordsMap[keyword]}) 
+        </span>`
+        strHTMLs.push(strHTML)
+    }
+
+    elKeyWords.innerHTML = strHTMLs.join('')
+    console.log(keywordsMap);
+}
 
 
 //b: regex based filter
@@ -92,6 +127,8 @@ function renderCanvas() {
         // gCtx.closePath();
     });
 }
+
+
 
 //b: editDivs rendering based on canvasTexts position
 function renderEditDivs() {

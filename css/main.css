@@ -14,15 +14,18 @@
     font-family: 'Lato-Regular';
     src: url('../fonts/lato/Lato-Regular.ttf');
 }
+
 @font-face {
     font-family: 'Lato-Bold';
     src: url('../fonts/lato/Lato-Bold.ttf');
 }
+
 /* Cleaning */
 
 * {
     box-sizing: border-box;
-    -webkit-overflow-scrolling: touch; /* smooth scrolling for ios */
+    -webkit-overflow-scrolling: touch;
+    /* smooth scrolling for ios */
 }
 
 html {
@@ -37,6 +40,7 @@ body {
 }
 
 /* dont remove */
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
@@ -51,6 +55,7 @@ a {
 a[download] {
     color: blue;
 }
+
 a[download]:hover {
     text-decoration: underline;
 }
@@ -70,8 +75,6 @@ input, button {
     font-size: 17px;
 }
 
-
-
 input[type=search] {
     font-family: Impact;
     font-size: 34px;
@@ -86,8 +89,6 @@ section {
     margin-top: 80px;
 }
 
-
-
 header {
     background-color: #323232;
     color: #fff;
@@ -101,6 +102,7 @@ header {
     width: 100vw;
     height: 40px;
 }
+
 header>.logo {
     max-height: 40px;
     /* margin: 0; */
@@ -194,10 +196,11 @@ img.selected {
     transition: .4s;
 }
 
-.ui{
+.ui {
     width: 95%;
     max-width: 800px;
 }
+
 .ui-edit {
     width: 100%;
     /* position: absolute; */
@@ -252,11 +255,11 @@ img {
 }
 
 /* b: needed for the editable divs */
+
 .canvas-wrap {
     position: relative;
     /* align-items: center; */
 }
-
 
 canvas {
     cursor: crosshair;
@@ -264,13 +267,14 @@ canvas {
 }
 
 /* b: text-box is the class of the editable div */
+
 .text-box {
     background-color: transparent;
     padding: 20px;
     cursor: pointer;
     z-index: 10;
     position: absolute;
-    top:0;
+    top: 0;
     font-family: Impact;
     font-size: 50px;
     padding: 13px 0;
@@ -282,60 +286,6 @@ canvas {
 
 .text-box:focus {
     border: 1px dotted blue;
-}
-
-
-
-@media (max-width:670px) {
-
-    .text-box {
-        padding: 5px 0;
-        padding-right: 10px;
-    }
-
-
-    header {
-        background-color: black;
-        padding: 30px 0;
-    }
-    .ui {
-        flex-direction: column;
-    }
-
-
-    /* .ui-edit {
-        transform: rotate(-90deg);
-        top: 45%;
-        left: 53%;
-        width: 90%; 
-    } */
-
-    input[type=search] {
-        font-size: 17px;
-        width: 50vw;
-    }
-
-    .images {
-        grid-template-columns: repeat(4, minmax(20px, 23vw));
-        height: auto;
-    }
-    .images>div>img {
-        max-width: 23vw;
-    }
-    .about-us {
-        flex-direction: column;
-        padding-top: 20px;
-    }
-    .about-us>img {
-        width: 60%;
-        flex-grow: 1;
-    }
-    .about-us>div {
-        width: 90%;
-        flex-grow: 1;
-        text-align: center;
-    }
-
 }
 
 /* Helpers */
@@ -361,14 +311,10 @@ canvas {
 .uppercase {
     text-transform: uppercase;
 }
-.capitalize {
-    text-transform: capitalize;
-}
 
 .pointer {
     cursor: pointer;
 }
-
 
 /* 
 
@@ -379,6 +325,76 @@ div {
     min-width: 50px;
 }  */
 
+/* keywords css */
 
+.keywords {
+    text-align: center;
+    width: 90%;
+    margin: 10px 0;
+}
 
+span.keyword {
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
 
+span.keyword:hover {
+    color: orange;
+}
+
+@media (max-width:670px) {
+    .text-box {
+        padding: 5px 0;
+        padding-right: 10px;
+    }
+    header {
+        background-color: black;
+        padding: 30px 0;
+    }
+    .ui {
+        flex-direction: column;
+    }
+    /* .ui-edit {
+        transform: rotate(-90deg);
+        top: 45%;
+        left: 53%;
+        width: 90%; 
+    } */
+    input[type=search] {
+        font-size: 17px;
+        width: 50vw;
+    }
+    .images {
+        grid-template-columns: repeat(4, minmax(20px, 23vw));
+        height: auto;
+    }
+    .images>div>img {
+        max-width: 23vw;
+    }
+    .about-us {
+        flex-direction: column;
+        padding-top: 20px;
+    }
+    .about-us>img {
+        width: 60%;
+        flex-grow: 1;
+    }
+    .about-us>div {
+        width: 90%;
+        flex-grow: 1;
+        text-align: center;
+    }
+}
+
+/* keywords css MOBILE */
+
+.keywords {
+    text-align: center;
+    width: 100%;
+    font-size: 13px;
+}
+
+span.keyword {
+    padding: 3px;
+}
