@@ -6,15 +6,18 @@
 }
 
 @font-face {
-    font-family: NOTImpact;
-    src: url("../fonts/HP-Impact.ttf")
-}
-
-@font-face {
     font-family: Ahronbd;
     src: url("../fonts/ahronbd.ttf")
 }
 
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('../fonts/lato/Lato-Regular.ttf');
+}
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('../fonts/lato/Lato-Bold.ttf');
+}
 /* Cleaning */
 
 * {
@@ -126,8 +129,6 @@ header a:hover {
     /* background-color: red;
     z-index: 200; */
 }
-
-
 
 .canvas-container>* {
     margin-bottom: 20px;
