@@ -115,7 +115,7 @@ function renderImageKeywords(image) {
         return `
             <span>
                 ${keyword} 
-                <i class="fas fa-times-circle" 
+                <i class="fas fa-times-circle pointer" 
                 onclick="onRemoveKeyword(${idx})"></i>
                 </span>
         `
