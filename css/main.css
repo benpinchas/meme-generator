@@ -29,11 +29,12 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
 
 body {
     margin: 0;
+    /* padding-top: 50px; */
     font-family: 'Lato-Regular';
     width: 100vw;
     height: 100vh;
@@ -50,6 +51,9 @@ a {
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+}
+section {
+    padding-top: 50px;
 }
 
 a[download] {
@@ -85,27 +89,29 @@ input:disabled, button:disabled {
     cursor: default;
 }
 
-section {
-    margin-top: 80px;
-}
-
 header {
     background-color: #323232;
     color: #fff;
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     align-items: center;
     z-index: 30;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 40px;
+    height: 50px;
 }
-
-header>.logo {
-    max-height: 40px;
-    /* margin: 0; */
+.header-container {
+    /* padding: 0 auto; */
+    height: 30px;   
+    margin: 10px auto;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+}
+.header-container>*:not(:first-child) {
+    margin-left: 20px;
 }
 
 header a:hover {
@@ -148,10 +154,6 @@ header a:hover {
     margin-left: 20px;
 }
 
-.logo {
-    margin: 0 30px;
-}
-
 #sizing {
     border: 1px solid black;
     min-height: 10px;
@@ -182,18 +184,22 @@ button:disabled {
     width: 20vw;
     height: 17vw;
     max-width: 20vw;
+    transition: .2s;
 }
 
-.images>div>img:hover {
-    opacity: 0.9;
+.images>div>img:hover:not(.selected) {
+    /* opacity: 0.9; */
+    transform: scale(1.1);
+    transition: .2s;
 }
 
 img.selected {
     box-shadow: 9px 11px 11px #170606;
     z-index: 10;
-    height: 20vw !important;
+    transform: scale(1.1);
+    /* height: 20vw !important; */
     /* position: absolute; */
-    transition: .4s;
+    transition: .2s;
 }
 
 .ui {
