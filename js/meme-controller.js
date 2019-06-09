@@ -46,7 +46,7 @@ function renderKeywords() {
         })
     })
 
-    let strHTMLs = []
+    let strHTMLs = [`<span class="keyword" style="font-size:23px" onclick="renderImages()"> All(${getImages().length})</span>`]
     for (const keyword in keywordsMap) {
         let fontSize = Math.min(15 + keywordsMap[keyword]*2, 31)
         let strHTML = `
