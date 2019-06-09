@@ -180,6 +180,7 @@ button:disabled {
 .images>div>img {
     /* width:100px; */
     cursor: pointer;
+    object-fit: cover;
     width: 20vw;
     height: 17vw;
     max-width: 20vw;
