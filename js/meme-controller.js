@@ -19,15 +19,13 @@ function init() {
         createTexts();
     }
     gCtx = gCanvas.getContext('2d');
-    
+
     createImages()
     renderImages();
     renderKeywords()
-    
+
     renderCanvas()
     renderEditDivs();
-
-    
 } //same 2
 
 
@@ -38,7 +36,7 @@ function renderKeywords() {
     let keywordsMap = {}
     getImages().forEach(image => {
         image.keywords.forEach(keyword => {
-            if(keywordsMap[keyword]) {
+            if (keywordsMap[keyword]) {
                 keywordsMap[keyword]++
             } else {
                 keywordsMap[keyword] = 1;
@@ -48,7 +46,7 @@ function renderKeywords() {
 
     let strHTMLs = [`<span class="keyword" style="font-size:23px" onclick="renderImages()"> All(${getImages().length})</span>`]
     for (const keyword in keywordsMap) {
-        let fontSize = Math.min(15 + keywordsMap[keyword]*2, 31)
+        let fontSize = Math.min(15 + keywordsMap[keyword] * 2, 31)
         let strHTML = `
         <span class="keyword" 
         style="font-size:${fontSize}px"
@@ -101,6 +99,7 @@ function onAddKeyword(elInput) {
     addKeyWord(image, elInput.value)
     elInput.value = ''
     renderImageKeywords(image)
+    renderKeywords()
 }
 
 function onRemoveKeyword(keywordIdx) { //ben mark
@@ -108,6 +107,7 @@ function onRemoveKeyword(keywordIdx) { //ben mark
     let image = getImageById(gImgEl.dataset.id)
     removeKeyword(image, keywordIdx)
     renderImageKeywords(image)
+    renderKeywords()
 }
 
 function renderImageKeywords(image) {
@@ -121,7 +121,7 @@ function renderImageKeywords(image) {
         `
     })
     document.querySelector('.image-keywords-container').classList.remove('hidden')
-    document.querySelector('.image-keywords').innerHTML = strHTMLs.join('') 
+    document.querySelector('.image-keywords').innerHTML = strHTMLs.join('')
 }
 
 function onClickImage(imgEl, id) {
@@ -156,7 +156,7 @@ function renderCanvas() {
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
-        gCtx.lineWidth = text.size/17;
+        gCtx.lineWidth = text.size / 17;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
@@ -295,9 +295,9 @@ function onAddText() {
     renderCanvas()
 
     let editDivs = document.querySelectorAll('.text-box');
-    for (let i=0; i<editDivs.length; i++) {
+    for (let i = 0; i < editDivs.length; i++) {
         editDivs[i].style.display = 'none'
-    } 
+    }
     renderEditDivs()
 }
 
