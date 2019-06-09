@@ -67,9 +67,7 @@ input, button {
     font-size: 17px;
 }
 
-input[type=color] {
-    font-size: 17px;
-}
+
 
 input[type=search] {
     font-family: Impact;
@@ -129,10 +127,7 @@ header a:hover {
     z-index: 200; */
 }
 
-canvas {
-    cursor: crosshair;
-    border: 1px solid red;
-}
+
 
 .canvas-container>* {
     margin-bottom: 20px;
@@ -257,7 +252,18 @@ img {
 /* b: needed for the editable divs */
 .canvas-wrap {
     position: relative;
+    /* align-items: center; */
 }
+.canvas-wrap>.ui-edit {
+  display: none;
+}
+
+
+canvas {
+    cursor: crosshair;
+    border: 1px solid red;
+}
+
 /* b: text-box is the class of the editable div */
 .text-box {
     background-color: transparent;
@@ -322,6 +328,36 @@ img {
         flex-grow: 1;
         text-align: center;
     }
+
+
+
+    .ui-edit {
+        display: none;
+    }
+    .canvas-wrap>.ui-edit {
+        /* transform: rotate(-90deg);
+        width: 10%;
+        align-self: flex-end; */
+    
+        transform: rotate(-90deg);
+        /* width: 93%; */
+        width: 70%;
+        /* align-self: flex-end; */
+        position: absolute;
+        /* left: 50%; */
+        left: 61%;
+    
+        /* top: 60%; */
+        top: 46%;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(128, 128, 128, 0.061);
+    }
+    
+
+
+
+
 }
 
 /* Helpers */
