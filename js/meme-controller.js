@@ -115,6 +115,7 @@ function renderImageKeywords(image) {
             <span>${keyword} <button onclick="onRemoveKeyword(${idx})">X</button></span>
         `
     })
+    document.querySelector('.image-keywords-container').classList.remove('hidden')
     document.querySelector('.image-keywords').innerHTML = strHTMLs.join('') 
 }
 
