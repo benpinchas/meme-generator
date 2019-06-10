@@ -189,6 +189,10 @@ function renderImageKeywords(image) {
 }
 
 function onClickImage(imgEl, id) {
+    // if (gEditDiv) {
+    //     //we need to clean it. otherwise the editDivs would go behind the canvas
+    //     gEditDiv = null 
+    // }
     if(!getImgSrc()) {
         var canvasSectEl = document.querySelector('.sect-canvas-wrapper');
         canvasSectEl.classList.remove('trans-hidden');

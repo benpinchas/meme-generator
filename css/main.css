@@ -217,8 +217,8 @@ header a:hover {
 
 .trans-shown {
     transition: 1s;
-    transform: scale(1);
-    position: static;
+    /* transform: scale(1); CAUSING A BUG!!! COMMENT OUT! */
+    /* position: static; */
 }
 
 /*  */
@@ -402,7 +402,7 @@ canvas {
     background-color: transparent;
     padding: 20px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 100;
     position: absolute;
     top: 0;
     font-family: Impact;
