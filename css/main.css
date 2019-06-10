@@ -197,9 +197,13 @@ header a:hover {
 /* Canvas */
 
 .sect-canvas-wrapper {
-    background-color: #eaeaea;
+    background-color: #f3f2f2;
     width: 100%;
     height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sect-canvas {
@@ -497,12 +501,12 @@ span.keyword:hover {
     /* flex-grow: 1; */
     background-color: lightgray;
     border-radius: 7px;
-    padding: 5px;
+    padding: 7px;
     margin: 5px;
     min-width: 100px;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     text-transform: capitalize;
 }
 
@@ -538,9 +542,7 @@ span.keyword:hover {
     .sect-canvas {
         flex-direction: column;
     }
-    .sect-canvas :first-child {
-        margin-bottom: 10px;
-    }
+ 
     .sect-canvas>* {
         width: 100%;
     }

@@ -147,10 +147,14 @@ function renderImageKeywords(image) {
     let strHTMLs = image.keywords.map((keyword, idx) => {
         return `
             <span>
-                ${keyword} 
-                <i class="fas fa-times-circle pointer" 
-                onclick="onRemoveKeyword(${idx})"></i>
-                </span>
+                <span>
+                    ${keyword}
+                </span>     
+                <span>
+                    <i class="fas fa-times-circle pointer" 
+                    onclick="onRemoveKeyword(${idx})"></i>
+                </span>    
+            </span>
         `
     })
     document.querySelector('.image-keywords-container').classList.remove('hidden')
@@ -159,7 +163,7 @@ function renderImageKeywords(image) {
 
 function onClickImage(imgEl, id) {
     if(!getImgSrc()) {
-        var canvasSectEl = document.querySelector('#sect-canvas');
+        var canvasSectEl = document.querySelector('.sect-canvas-wrapper');
         canvasSectEl.classList.remove('trans-hidden');
         canvasSectEl.classList.add('trans-shown');
     }
