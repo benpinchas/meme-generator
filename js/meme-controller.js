@@ -22,7 +22,7 @@ function init() {
     
     createImages()
     renderImages();
-    renderKeywords()
+    renderKeywordsTags()
 
     renderCanvas()
     renderEditDivs();
@@ -31,7 +31,7 @@ function init() {
 
 
 //b: TODO: write function im img-servise that returns keywordsMap;
-function renderKeywords() {
+function renderKeywordsTags() {
     let elKeyWords = document.querySelector('.keywords');
     let keywordsMap = {}
     getImages().forEach(image => {
@@ -44,13 +44,14 @@ function renderKeywords() {
         })
     })
 
-    let strHTMLs = [`<span class="keyword" style="font-size:23px" onclick="renderImages()"> All(${getImages().length})</span>`]
+    let strHTMLs = [`<span class="keyword-tag" style="font-size:23px" onclick="onKeywordTagClick(this)"> All(${getImages().length})</span>`]
     for (const keyword in keywordsMap) {
         let fontSize = Math.min(15 + keywordsMap[keyword]*2, 31)
         let strHTML = `
-        <span class="keyword" 
+        <span class="keyword-tag" 
         style="font-size:${fontSize}px"
-        onclick="renderImages('${keyword}')"
+        data-value="${keyword}"
+        onclick="onKeywordTagClick(this)"
         >
             ${keyword}(${keywordsMap[keyword]}) 
         </span>`
@@ -62,7 +63,19 @@ function renderKeywords() {
 }
 
 
-//b: regex based filter
+function onKeywordTagClick(el) {
+    //'All' keyword not sending dataset.value to the  renderImages(),
+    // so it would use getImages() and with no filterImages()
+    if ( document.querySelector('.selected')) {
+        document.querySelector('.selected').classList.remove('selected')
+    }
+    
+    el.classList.add('selected')
+    renderImages(el.dataset.value)
+} 
+
+
+//regex based filter
 function filterImages(str) {
     let regex = new RegExp(str, 'i')
     return getImages().filter(image => {
@@ -99,7 +112,7 @@ function onAddKeyword(elInput) {
     addKeyWord(image, elInput.value)
     elInput.value = ''
     renderImageKeywords(image)
-    renderKeywords()
+    renderKeywordsTags()
 }
 
 function onRemoveKeyword(keywordIdx) { //ben mark
@@ -107,7 +120,7 @@ function onRemoveKeyword(keywordIdx) { //ben mark
     let image = getImageById(gImgEl.dataset.id)
     removeKeyword(image, keywordIdx)
     renderImageKeywords(image)
-    renderKeywords()
+    renderKeywordsTags()
 }
 
 function renderImageKeywords(image) {

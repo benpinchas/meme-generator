@@ -423,6 +423,24 @@ span.keyword:hover {
     margin-left: 15px;
 }
 
+
+.keywords {
+    text-align: center;
+    width: 100%;
+    font-size: 13px;
+}
+
+.keyword-tag {
+    padding: 3px;
+    cursor: pointer;
+}
+
+.keyword-tag.selected {
+    color: orange;
+}
+
+
+
 @media (max-width:670px) {
     .text-box {
         padding: 5px 0;
@@ -466,17 +484,7 @@ span.keyword:hover {
     }
 }
 
-/* keywords css MOBILE */
 
-.keywords {
-    text-align: center;
-    width: 100%;
-    font-size: 13px;
-}
-
-span.keyword {
-    padding: 3px;
-}
 
 /* INPUT RANGE */
 
