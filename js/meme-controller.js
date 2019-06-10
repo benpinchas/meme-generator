@@ -43,6 +43,34 @@ function renderKeywordsTags() {
         })
     })
 
+    let keywordsArr = []
+    for (const keyword in keywordsMap) {
+       keywordsArr.push({text:keyword, count: keywordsMap[keyword]})
+    }
+
+    keywordsArr.sort((keyword1, keyword2) => {
+            return keyword1.count - keyword2.count
+    })
+
+    let renderAmount = Math.min(keywordsArr.length, 15) //in case of lack in keywords
+    let biggestKeywordsArr = keywordsArr.slice(keywordsArr.length-renderAmount)
+    
+    let strHTMLs = [`<span class="keyword-tag" style="font-size:23px" onclick="onKeywordTagClick(this)"> All(${getImages().length})</span>`]
+    biggestKeywordsArr.forEach(keywordObj => {
+        let fontSize = Math.min(15 + keywordObj.count * 2, 31)
+        let strHTML = `
+        <span class="keyword-tag" 
+        style="font-size:${fontSize}px"
+        data-value="${keywordObj.text}"
+        onclick="onKeywordTagClick(this)"
+        >
+            ${keywordObj.text}(${keywordObj.count}) 
+        </span>`
+        strHTMLs.push(strHTML)
+    })
+
+    
+    /* all keywords render
     let strHTMLs = [`<span class="keyword-tag" style="font-size:23px" onclick="onKeywordTagClick(this)"> All(${getImages().length})</span>`]
     for (const keyword in keywordsMap) {
         let fontSize = Math.min(15 + keywordsMap[keyword] * 2, 31)
@@ -55,10 +83,9 @@ function renderKeywordsTags() {
             ${keyword}(${keywordsMap[keyword]}) 
         </span>`
         strHTMLs.push(strHTML)
-    }
+    }*/
 
     elKeyWords.innerHTML = strHTMLs.join('')
-    console.log(keywordsMap);
 }
 
 
@@ -252,8 +279,8 @@ function onCanvasMouseDown(ev) {
     if (ev.target.id === 'meme-canvas') {
         gEditDiv = null
         renderMode()
-        let innerImage = getInnerImageClick(ev.offsetX, ev.offsetY)
-        console.log(innerImage);
+        // let innerImage = getInnerImageClick(ev.offsetX, ev.offsetY)
+        // console.log(innerImage);
     }
 
 }
@@ -414,7 +441,6 @@ function renderOutline(text, color = 'black') {
 }
 
 
-//ben
 function renderMode() {
     let uiEditEls = document.querySelectorAll('.ui-edit > *')
     for (let i = 0; i < uiEditEls.length; i++) {

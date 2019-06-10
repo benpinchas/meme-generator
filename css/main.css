@@ -535,6 +535,7 @@ span.keyword:hover {
     text-align: center;
     width: 100%;
     font-size: 13px;
+    max-width: 1110px;
 }
 
 .keyword-tag {

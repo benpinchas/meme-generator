@@ -27,7 +27,7 @@ function createInnerImage(elImage) {
     return {
         elImage: elImage,
         pos: {x:100, y:100},
-        dimensions: 50,
+        size: 50,
         id: getId(),
     };
 }
