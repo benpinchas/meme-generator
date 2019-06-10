@@ -19,7 +19,6 @@ function init() {
         createTexts();
     }
     gCtx = gCanvas.getContext('2d');
-    
     createImages()
     renderImages();
     renderKeywordsTags()
@@ -36,7 +35,7 @@ function renderKeywordsTags() {
     let keywordsMap = {}
     getImages().forEach(image => {
         image.keywords.forEach(keyword => {
-            if(keywordsMap[keyword]) {
+            if (keywordsMap[keyword]) {
                 keywordsMap[keyword]++
             } else {
                 keywordsMap[keyword] = 1;
@@ -46,7 +45,7 @@ function renderKeywordsTags() {
 
     let strHTMLs = [`<span class="keyword-tag" style="font-size:23px" onclick="onKeywordTagClick(this)"> All(${getImages().length})</span>`]
     for (const keyword in keywordsMap) {
-        let fontSize = Math.min(15 + keywordsMap[keyword]*2, 31)
+        let fontSize = Math.min(15 + keywordsMap[keyword] * 2, 31)
         let strHTML = `
         <span class="keyword-tag" 
         style="font-size:${fontSize}px"
@@ -66,13 +65,13 @@ function renderKeywordsTags() {
 function onKeywordTagClick(el) {
     //'All' keyword not sending dataset.value to the  renderImages(),
     // so it would use getImages() and with no filterImages()
-    if ( document.querySelector('.selected')) {
+    if (document.querySelector('.selected')) {
         document.querySelector('.selected').classList.remove('selected')
     }
-    
+
     el.classList.add('selected')
     renderImages(el.dataset.value)
-} 
+}
 
 
 //regex based filter
@@ -102,10 +101,31 @@ function renderImages(searchStr) {
 }
 
 //TODO ??? insert to on image click
-function renderImage(img) {
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+function renderImage(elImage) {
+    gCtx.drawImage(elImage, 0, 0, gCanvas.width, gCanvas.height);
 }
 
+function onEmojiClick(el) {
+    let emoji = el.innerText;
+    gEditDiv.focus()
+    gEditDiv.innerText += ' ' + emoji
+    onKeyUp(gEditDiv)
+}
+
+function onAddInnerImage(elInnerImage) {
+    console.log(elInnerImage);
+    addInnerImage(elInnerImage)
+    renderCanvas()
+}
+
+// TODO InnerImage Feature
+// function getInnerImageClick(offsetX, offsetY) {
+//     return getInnerImages().find(innerImage => {
+//         return true
+//         return (offsetX > innerImage.pos.x && offsetX < innerImage.pos.x + innerImage.dimensions)
+//             && (offsetY > innerImage.pos.y && offsetY < innerImage.pos.y + innerImage.dimensions)
+//     })
+// }
 
 function onAddKeyword(elInput) {
     let image = getImageById(gImgEl.dataset.id)
@@ -134,7 +154,7 @@ function renderImageKeywords(image) {
         `
     })
     document.querySelector('.image-keywords-container').classList.remove('hidden')
-    document.querySelector('.image-keywords').innerHTML = strHTMLs.join('') 
+    document.querySelector('.image-keywords').innerHTML = strHTMLs.join('')
 }
 
 function onClickImage(imgEl, id) {
@@ -169,11 +189,24 @@ function renderCanvas() {
         gCtx.fillStyle = text.color;
         gCtx.fillText(text.line, textX, textY + text.outline.height);
 
-        gCtx.lineWidth = text.size/17;
+        gCtx.lineWidth = text.size / 17;
         gCtx.strokeText(text.line, textX, textY + text.outline.height);
 
         // gCtx.closePath();
     });
+
+    /*
+    // // TODO InnerImage Feature
+    let innerImages = getInnerImages()
+    innerImages.forEach(innerImage => {
+        // gCtx.beginPath();
+        let innerImageX = innerImage.pos.x;
+        let innerImageY = innerImage.pos.y;
+
+        gCtx.drawImage(innerImage.elImage, 250, 250, 100, 100)
+        // gCtx.closePath();
+    });
+    */
 }
 
 
@@ -210,7 +243,10 @@ function onCanvasMouseDown(ev) {
     if (ev.target.id === 'meme-canvas') {
         gEditDiv = null
         renderMode()
+        let innerImage = getInnerImageClick(ev.offsetX, ev.offsetY)
+        console.log(innerImage);
     }
+
 }
 
 
@@ -303,14 +339,14 @@ function onMouseUp() {
 }
 
 
-function onAddText() {
-    addText()
+function onAddText(text) {
+    addText(text)
     renderCanvas()
 
     let editDivs = document.querySelectorAll('.text-box');
-    for (let i=0; i<editDivs.length; i++) {
+    for (let i = 0; i < editDivs.length; i++) {
         editDivs[i].style.display = 'none'
-    } 
+    }
     renderEditDivs()
 }
 
@@ -332,6 +368,7 @@ function editText(input) {
 }
 
 function onSetTextProps() {
+    gEditDiv.focus()
     let color = document.querySelector('#color').value
     let size = document.querySelector('#font-size').value
 
@@ -340,6 +377,7 @@ function onSetTextProps() {
     let text = getTextById(gEditDiv.dataset.id)
     setTextProps(text, color, size)
     renderCanvas()
+
 }
 
 //ben
@@ -354,7 +392,7 @@ function onDeleteText() {
 }
 
 function renderOutline(text, color = 'black') {
-    let outline = text.outline //mark 
+    let outline = text.outline
     let outlineHeight = Math.max(text.size, outline.height)
     let outlineWidth = Math.max(20, outline.width)
 

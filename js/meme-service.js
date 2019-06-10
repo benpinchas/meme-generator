@@ -9,11 +9,37 @@ function createTexts(canvasWidth=800, canvasHeight=600) {
             createText('One click to edit', canvasWidth/13, { x: col, y: row*4}, '#0084ff',getId()),
             createText('Drag Me', canvasWidth/20, { x: col*2, y: row*7}, '#006b31','4')
         ]
+        gMeme.innerImages = [
+
+        ]
     }
 }
 
-function addText(line, size, pos,color, id) {
-    let newText = createText(line, size, pos, color, id);
+/*
+// TODO InnerImage Feature
+function addInnerImage(elImage) {
+    let newInnerImage = createInnerImage(elImage)
+    gMeme.innerImages.push(newInnerImage);
+}
+
+function createInnerImage(elImage) {
+    console.log(elImage);
+    return {
+        elImage: elImage,
+        pos: {x:100, y:100},
+        dimensions: 50,
+        id: getId(),
+    };
+}
+
+function getInnerImages() {
+    return gMeme.innerImages
+}
+*/
+
+
+function addText(line) {
+    let newText = createText(line);
     gMeme.txts.push(newText);
 }
 
