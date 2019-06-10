@@ -158,6 +158,11 @@ function renderImageKeywords(image) {
 }
 
 function onClickImage(imgEl, id) {
+    if(!getImgSrc()) {
+        var canvasSectEl = document.querySelector('#sect-canvas');
+        canvasSectEl.classList.remove('trans-hidden');
+        canvasSectEl.classList.add('trans-shown');
+    }
     if (gImgEl) gImgEl.classList.remove('selected')
 
     let image = getImageById(id)

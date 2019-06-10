@@ -23,92 +23,98 @@
         </div>
     </header>
 
-    <section id="sect-canvas">
-        <h3 style="text-align: center; color:red">Please use 100% browser zoom</h3>
-        <div class="container canvas-container">
-            <div class="ui container">
-                <div class="container-horizontal">
-                    <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
-                    <button id="add-text" class="pointer" onclick="onAddText();">Add New Text</button>
+
+    <div class="sect-canvas-wrapper">
+        <section id="sect-canvas" class="sect-canvas flex justify-between trans-hidden default-max-width">
+            <div class="container canvas-container">
+                <!-- b: NEEDED FOR THE EDITABLE DIVS -->
+                <div class="canvas-wrap" onmousedown="onCanvasMouseDown(event)" onmousemove="onMouseMove(event)"
+                    onmouseup="onMouseUp()" ontouchmove="onTouchMove(event)">
+
+                    <span></span>
+
+
+
+                    <canvas id="meme-canvas" width="800" height="600">
+                        Please upgrade your internet browser to enjoy our meme generator
+                    </canvas>
+
                 </div>
+                <!-- b: END -->
 
-                <div class="ui-edit container-horizontal">
-                    <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
-                    <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
-                        disabled>
-                    <input type="color" name="color" id="color" oninput="onSetTextProps()" disabled>
-                </div>
-
-                <div class="emojis-container">
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🤗</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🙄</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">😍</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🔥</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">😈</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🏄‍♂️</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🎂</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🎉</span>
-
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🤗</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🙄</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">😍</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🔥</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">😈</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🏄‍♂️</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🎂</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🎉</span>
-
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🤗</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🙄</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">😍</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🔥</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">😈</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🏄‍♂️</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🎂</span>
-                    <span onmouseup="onEmojiClick(this)" class="emoji">🎉</span>
-                    
-                </div>
-
-                <!-- <div class="meme-svgs-container">
-                    <img src="img/meme-svg/smile.png" alt="" onclick="onAddInnerImage(this)">
-                    <img src="img/meme-svg/smile.png" alt="">
-                    <img src="img/meme-svg/smile.png" alt="">
-                    <img src="img/meme-svg/smile.png" alt="">
-                </div> -->
-
+                <div id="sizing" class="hidden inline-block"></div>
             </div>
+            <div class="secondary-canvas">
+                <div class="ui container">
+                    <div class="container-horizontal">
+                        <input type="text" class="hidden" id="text-edit" placeholder="Type S" onkeyup="editText(this)">
+                        <button id="add-text" class="pointer" onclick="onAddText();">Add New Text</button>
+                    </div>
 
-            <!-- b: NEEDED FOR THE EDITABLE DIVS -->
-            <div class="canvas-wrap" onmousedown="onCanvasMouseDown(event)" onmousemove="onMouseMove(event)"
-                onmouseup="onMouseUp()" ontouchmove="onTouchMove(event)">
+                    <div class="ui-edit container-horizontal">
+                        <button id="delete-text" onclick="onDeleteText()" disabled>Delete</button>
+                        <input type="range" name="font-size" id="font-size" min="25" max="86" oninput="onSetTextProps()"
+                            disabled>
+                        <input type="color" name="color" id="color" oninput="onSetTextProps()" disabled>
+                    </div>
 
-                <span></span>
+                    <div class="emojis-container">
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🤗</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🙄</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">😍</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🔥</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">😈</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🏄‍♂️</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🎂</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🎉</span>
 
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🤗</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🙄</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">😍</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🔥</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">😈</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🏄‍♂️</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🎂</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🎉</span>
 
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🤗</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🙄</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">😍</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🔥</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">😈</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🏄‍♂️</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🎂</span>
+                        <span onmouseup="onEmojiClick(this)" class="emoji">🎉</span>
 
-                <canvas id="meme-canvas" width="800" height="600">
-                    Please upgrade your internet browser to enjoy our meme generator
-                </canvas>
+                    </div>
 
-            </div>
-            <!-- b: END -->
-            <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
-                Save as JPEG
-            </a>
-
-            <div class="image-keywords-container hidden">
-                <div class="image-keywords">
+                    <!-- <div class="meme-svgs-container">
+                                            <img src="img/meme-svg/smile.png" alt="" onclick="onAddInnerImage(this)">
+                                            <img src="img/meme-svg/smile.png" alt="">
+                                            <img src="img/meme-svg/smile.png" alt="">
+                                            <img src="img/meme-svg/smile.png" alt="">
+                                        </div> -->
 
                 </div>
-                <div>
-                    <input type="text" onchange="onAddKeyword(this)" placeholder="Add Keyword" name="" id="">
+                <h3 style="text-align: center; color:red">Please use 100% browser zoom</h3>
+                <div class="image-keywords-container hidden">
+                    <div class="image-keywords">
+
+                    </div>
+                    <div>
+                        <input type="text" onchange="onAddKeyword(this)" placeholder="Add Keyword" name="" id="">
+                    </div>
                 </div>
-
+                <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
+                    Save as JPEG
+                </a>
             </div>
+        </section>
+    </div>
 
-            <div id="sizing" class="hidden inline-block"></div>
-        </div>
-    </section>
+
+
+
     <section id="sect-images">
         <div class="images-container container">
             <div class="container">
