@@ -93,7 +93,7 @@
             </div>
             <!-- b: END -->
             <a href="#" onclick="downloadCanvas(this)" download="my-canvas.jpeg">
-                Save as Jpeg
+                Save as JPEG
             </a>
 
             <div class="image-keywords-container hidden">
@@ -101,9 +101,9 @@
 
                 </div>
                 <div>
-                    <input type="text"  onchange="onAddKeyword(this)" placeholder="Add Keyword" name="" id="">
+                    <input type="text" onchange="onAddKeyword(this)" placeholder="Add Keyword" name="" id="">
                 </div>
-               
+
             </div>
 
             <div id="sizing" class="hidden inline-block"></div>
@@ -122,22 +122,36 @@
             </div>
         </div>
     </section>
-
-
     <section id="sect-about-us">
-        <div class="about-us-container">
-            <div class="about-us">
-                <img class="large-logo" src="img/logo/full-logo.png" alt="">
+        <div class="about-us">
+            <div class="flex first">
+                <img src="img/portraits/ben-pinchas-512.png" alt="">
                 <div>
-                    <h2>MEME Inc. &copy</h2>
-                    <p>
-                        
-                        This app is free to use
-                    </p>
+                    <h3>Ben Pinchas</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, sequi.</p>
+                </div>
+            </div>
+            <div class="flex second">
+                <img src="img/portraits/jonathan-fridja-512.jpg" alt="">
+                <div>
+                    <h3>Jonathan Fridja</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, sequi.</p>
                 </div>
             </div>
         </div>
+        <div class="flex second">
+            <img src="img/portraits/ben-pinchas.png" alt=""></div>
+        <div class="flex second">
+        </div>
     </section>
+    <footer>
+        <div class="footer-container flex align-center">
+            <img src="img/logo/logo-no-word.png" alt="" class="logo">
+            <div>
+                MEME Inc. &copy
+            </div>
+        </div>
+    </footer>
     <script src="js/img-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>

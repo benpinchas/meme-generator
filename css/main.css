@@ -276,27 +276,58 @@ img.selected {
     flex-flow: row;
 }
 
-/* footer */
-
-.about-us-container {
-    background-color: #2FB298;
-}
+/* About us */
 
 .about-us {
-    height: 50vh;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
-
-.about-us>img {
-    height: 80%;
+.about-us>.first>*, .about-us>.second>*  {
+    margin: 0 20px;
 }
 
-.about-us>div {
-    width: 50%;
+section .first {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+section .second {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.first>img, .second>img {
+    height: 17vw;
+}
+
+
+/*  */
+
+/* footer */
+
+footer {
+    background-color: #2FB298;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-container {
+    max-width: 800px;
+    /* margin: 0 auto; */
+}
+
+.footer-container :first-child {
+    margin-right: 20px;
 }
 
 .contact-us {
@@ -356,6 +387,14 @@ canvas {
 
 .justify-around {
     justify-content: space-around;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .uppercase {
@@ -431,7 +470,6 @@ span.keyword:hover {
     margin-left: 15px;
 }
 
-
 .keywords {
     text-align: center;
     width: 100%;
@@ -446,8 +484,6 @@ span.keyword:hover {
 .keyword-tag.selected {
     color: orange;
 }
-
-
 
 @media (max-width:670px) {
     .emojis-container {
