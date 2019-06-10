@@ -252,7 +252,20 @@ img.selected {
 /* footer */
 
 .about-us-container {
+}
+footer {
     background-color: #2FB298;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-container {
+    max-width: 800px;
+    /* margin: 0 auto; */
+}
+.footer-container:first-child {
+    margin-right: 20px;
 }
 
 .about-us {
@@ -329,6 +342,12 @@ canvas {
 
 .justify-around {
     justify-content: space-around;
+}
+.align-center {
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
 }
 
 .uppercase {
