@@ -6,11 +6,6 @@
 }
 
 @font-face {
-    font-family: Ahronbd;
-    src: url("../fonts/ahronbd.ttf")
-}
-
-@font-face {
     font-family: 'Lato-Regular';
     src: url('../fonts/lato/Lato-Regular.ttf');
 }
@@ -18,6 +13,11 @@
 @font-face {
     font-family: 'Lato-Bold';
     src: url('../fonts/lato/Lato-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Impact';
+    src: url('../fonts/impact/impact.ttf');
 }
 
 /* Cleaning */
@@ -259,7 +259,8 @@ img.selected {
     justify-content: space-around;
     align-items: center;
 }
-.about-us>.first>*, .about-us>.second>*  {
+
+.about-us>.first>*, .about-us>.second>* {
     margin: 0 20px;
 }
 
@@ -280,7 +281,6 @@ section .second {
 .first>img, .second>img {
     height: 17vw;
 }
-
 
 /*  */
 
