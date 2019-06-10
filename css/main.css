@@ -28,7 +28,6 @@
     /* smooth scrolling for ios */
 }
 
-
 body {
     margin: 0;
     /* padding-top: 50px; */
@@ -121,9 +120,19 @@ header {
     display: flex;
     align-items: center;
 }
+
 img.logo {
     height: 30px;
 }
+
+img.logo:hover {
+    animation: jiggle .4s;
+}
+
+.large-logo:hover {
+    animation: small-jiggle .4s;
+}
+
 .header-container>* {
     margin-left: 20px;
 }
@@ -450,8 +459,8 @@ span.keyword {
     padding: 3px;
 }
 
-
 /* INPUT RANGE */
+
 input[type=range] {
     -webkit-appearance: none;
     margin: 18px 0;
@@ -551,4 +560,36 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
     background: #367ebd;
+}
+
+/* Animations */
+
+@keyframes jiggle {
+    25% {
+        transform: translateY(2px);
+    }
+    50% {
+        transform: translateY(-1px);
+    }
+    75% {
+        transform: translateY(1px);
+    }
+    100% {
+        transform: translate3d(0);
+    }
+}
+
+@keyframes small-jiggle {
+    25% {
+        transform: translateY(2px);
+    }
+    50% {
+        transform: translateY(-1px);
+    }
+    75% {
+        transform: translateY(1px);
+    }
+    100% {
+        transform: translate3d(0);
+    }
 }
