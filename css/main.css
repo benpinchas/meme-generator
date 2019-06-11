@@ -122,6 +122,8 @@ input[type=text], input[type=search] {
     height: 50px;
 }
 
+
+
 input[type=search] {
     font-family: Impact;
     font-size: 34px;
@@ -543,7 +545,18 @@ span.keyword:hover {
     color: orange;
 }
 
+
+#sect-about-us {
+    display: none;
+}
+
+
 @media (max-width:670px) {
+
+    #sect-about-us {
+        display: block;
+    }
+
     .sect-canvas-wrapper {
         height: auto;
     }
